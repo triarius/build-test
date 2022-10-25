@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "Pre checkout hook is firing&&&&&&&&&&&&&&&&&&&&&"
