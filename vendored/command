@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "Command Vendored Plugin is firiing"
