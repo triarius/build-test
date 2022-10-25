@@ -3,8 +3,5 @@ env:
 
 steps:
   - command: ./run.sh
-    env:
-      LEVEL: "step"
-  - command: echo $BUILDKITE_MESSAGE
     plugins:
       -  ./vendored
