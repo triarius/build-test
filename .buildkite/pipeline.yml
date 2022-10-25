@@ -4,4 +4,4 @@ env:
 steps:
   - command: ./run.sh
     plugins:
-      -  file://./vendored
+      -  file://./.buildkite/plugins/vendored
