@@ -6,4 +6,4 @@ steps:
     plugins:
       -  file://./.buildkite/plugins/vendored
     agents:
-      queue: "mainline"
+      queue: ${PIPELINE_QUEUE:-default}
