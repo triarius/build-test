@@ -1,3 +1,5 @@
+dag: true
+
 env:
   LEVEL: "pipeline"
 
