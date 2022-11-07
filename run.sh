@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -Eeufxo pipefail
 
 grep MemTotal /proc/meminfo
 ls -lA
