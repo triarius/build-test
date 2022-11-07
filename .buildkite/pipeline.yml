@@ -15,7 +15,6 @@ steps:
   - label: List file
     name: list_files
     command: ./run.sh
-    plugins:
-      - triarius/git-lfs-fetch#main: ~
+  - command: ./run.sh
     agents:
       queue: ${PIPELINE_QUEUE:-default}
