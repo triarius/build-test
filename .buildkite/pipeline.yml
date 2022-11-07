@@ -9,8 +9,13 @@ steps:
     command: ./version.sh
     agents:
       queue: ${PIPELINE_QUEUE:-default}
-  - name: JWT
-    label: ":key: JWT"
+  - name: jwt
+    label: ":key: Obtain JWTs"
     command: ./jwt.sh
+  - label: List file
+    name: list_files
+    command: ./run.sh
+    plugins:
+      - triarius/git-lfs-fetch-buildkite-plugin#main: ~
     agents:
       queue: ${PIPELINE_QUEUE:-default}
