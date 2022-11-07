@@ -16,5 +16,10 @@ steps:
     name: list_files
     command: ./run.sh
   - command: ./run.sh
+  - command: ./run.sh
+    env:
+      BUILDKITE_PLUGINS_ALWAYS_CLONE_FRESH: "true"
+    plugins:
+      - triarius/git-lfs-fetch#main: ~
     agents:
       queue: ${PIPELINE_QUEUE:-default}
