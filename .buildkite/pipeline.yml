@@ -23,6 +23,6 @@ steps:
     env:
       BUILDKITE_PLUGINS_ALWAYS_CLONE_FRESH: "true"
     plugins:
-      - triarius/git-lfs-fetch: {}
+      - triarius/git-lfs-fetch#v0.1.0: {}
     agents:
       queue: ${PIPELINE_QUEUE:-default}
