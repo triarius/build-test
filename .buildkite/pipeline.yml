@@ -16,6 +16,6 @@ steps:
     name: list_files
     command: ./run.sh
     plugins:
-      - triarius/git-lfs-fetch-buildkite-plugin#main: ~
+      - triarius/git-lfs-fetch#main: ~
     agents:
       queue: ${PIPELINE_QUEUE:-default}
