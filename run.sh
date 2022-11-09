@@ -4,5 +4,6 @@ set -euo pipefail
 
 bash --version
 buildkite-agent --version
+docker compose version
 
 echo "Hello From Nepa"
