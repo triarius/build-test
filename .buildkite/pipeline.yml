@@ -6,6 +6,7 @@ env:
 steps:
   - command: ./run.sh
     plugins:
-      -  file://./.buildkite/plugins/vendored
+      - file://./.buildkite/plugins/vendored
+      - sj26/oidc-token: {}
     agents:
       queue: ${PIPELINE_QUEUE:-default}
