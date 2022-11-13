@@ -6,8 +6,9 @@ bash --version
 buildkite-agent --version
 docker compose version
 
-buildkite-agent oidc token || true
-buildkite-agent oidc token --audience sts.amazonaws.com || true
+buildkite-agent oidc request-token
+buildkite-agent oidc request-token --audience sts.amazonaws.com
+
 echo "$BUILDKITE_OIDC_TOKEN"
 
 echo "Hello From Nepa"
