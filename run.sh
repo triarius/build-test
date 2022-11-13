@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -Eeufo pipefail
+
+failure() {
+  local lineno=$1
+  local msg=$2
+  echo "Failed at $lineno: $msg" >&2
+}
+
+trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
 bash --version
 buildkite-agent --version
