@@ -14,7 +14,7 @@ bash --version
 buildkite-agent --version
 docker compose version
 
-buildkite-agent oidc request-token
-buildkite-agent oidc request-token --audience sts.amazonaws.com
+buildkite-agent oidc request-token | jwt
+buildkite-agent oidc request-token --audience sts.amazonaws.com | jwt
 
 echo "Hello From Nepa"
