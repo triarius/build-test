@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -Eeufo pipefail
+set -Eexufo pipefail
 
 failure() {
   local lineno=$1
@@ -16,5 +16,6 @@ docker compose version
 
 buildkite-agent oidc request-token | jwt
 buildkite-agent oidc request-token --audience sts.amazonaws.com | jwt
+buildkite-agent oidc request-token --audience sts.amazonaws.com --lifetime 600 | jwt
 
 echo "Hello From Nepa"
