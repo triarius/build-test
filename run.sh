@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -Eeufo pipefail
+set -Eexufo pipefail
 
 failure() {
   local lineno=$1
