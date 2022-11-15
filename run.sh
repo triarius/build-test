@@ -12,7 +12,6 @@ trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
 bash --version
 buildkite-agent --version
-docker compose version
 
 buildkite-agent oidc request-token | jwt
 buildkite-agent oidc request-token --audience sts.amazonaws.com | jwt
