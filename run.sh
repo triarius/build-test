@@ -10,11 +10,18 @@ failure() {
 
 trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
+echo "Hello From Nepa"
+
 bash --version
 buildkite-agent --version
 
+docker buildx build --progress=plain -t jwt:latest .
+
+function jwt {
+  docker run --rm -i -e FORCE_COLOR=3 jwt:latest
+}
+
 buildkite-agent oidc request-token | jwt
 buildkite-agent oidc request-token --audience sts.amazonaws.com | jwt
+buildkite-agent oidc request-token --audience sts.amazonaws.com --lifetime 0 | jwt
 buildkite-agent oidc request-token --audience sts.amazonaws.com --lifetime 600 | jwt
-
-echo "Hello From Nepa"

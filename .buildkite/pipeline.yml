@@ -4,7 +4,9 @@ env:
   LEVEL: "pipeline"
 
 steps:
-  - command: ./run.sh
+  - name: versions
+    label: ":bash:"
+    command: ./run.sh
     plugins:
       - file://./.buildkite/plugins/vendored
     agents:
