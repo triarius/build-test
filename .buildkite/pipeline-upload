@@ -20,6 +20,8 @@ docker buildx build \
   -t node-buildkite:latest \
   .
 
+docker run --rm --init node-buildkite:latest ls -lA
+
 npm() {
   docker run --rm --init node-buildkite:latest npm "$@"
 }
