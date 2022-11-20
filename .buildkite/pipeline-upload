@@ -21,7 +21,7 @@ docker buildx build \
   .
 
 npm() {
-  docker run --rm --init --user "$(id -u):$(id -g)" node-buildkite:latest npm "$@"
+  docker run --rm --init node-buildkite:latest npm "$@"
 }
 
 echo --- :node: Install packages
