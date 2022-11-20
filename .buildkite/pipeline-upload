@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -Eeufo pipefail
+
+failure() {
+  local lineno=$1
+  local msg=$2
+  echo "Failed at $lineno: $msg" >&2
+}
+
+trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
+
+docker buildx build \
+  --progress=plain \
+  --build-arg=USER_ID="$(id -u)" \
+  --build-arg=GROUP_ID="$(id -g)" \
+  -t node-buildkite:latest \
+  .
+
+npm() {
+  docker run --rm --init --user "$(id -u):$(id -g)" --volume "$(pwd)":/.buildkite node:18-alpine npm "$@"
+}
+
+echo --- :node: npm install
+npm clean-install
+
+echo --- :pipeline: Generate Pipeline
+npm run --silent generate-pipeline > pipeline.json
+
+echo -- :pipeline: Upload Pipeline
+buildkite-agent pipeline upload pipeline.json
