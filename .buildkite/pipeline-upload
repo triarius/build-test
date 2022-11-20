@@ -10,6 +10,8 @@ failure() {
 
 trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
+cd .buildkite
+
 docker buildx build \
   --progress=plain \
   --build-arg=USER_ID="$(id -u)" \
