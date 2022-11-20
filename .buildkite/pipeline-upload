@@ -15,8 +15,6 @@ cd .buildkite
 echo --- :docker: Build image
 docker buildx build \
   --progress=plain \
-  --build-arg=USER_ID="$(id -u)" \
-  --build-arg=GROUP_ID="$(id -g)" \
   -t node-buildkite:latest \
   .
 
