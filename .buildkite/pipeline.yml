@@ -9,7 +9,6 @@ steps:
     command: ./version.sh
     agents:
       queue: ${PIPELINE_QUEUE:-default}
-  - block: ":lock: JWT"
   - name: JWT
     label: ":key: JWT"
     command: ./jwt.sh
