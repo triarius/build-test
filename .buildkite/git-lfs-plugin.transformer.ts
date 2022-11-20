@@ -7,7 +7,7 @@ export default function (pipeline: Pipeline): Pipeline {
           ...step,
           plugins: {
             ...(step.plugins || {}),
-            "triarius/git-lfs-fetch:v0.1.0": {},
+            "triarius/git-lfs-fetch#v0.1.0": {},
           },
         }
       : step
