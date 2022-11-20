@@ -1,5 +1,6 @@
 {
   "type": "module",
+  "private": true,
   "scripts": {
     "compile": "npx tsc",
     "generate-pipeline": "npm run compile && node pipeline.js"
