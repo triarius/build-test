@@ -20,6 +20,8 @@ docker buildx build \
   -t node-buildkite:latest \
   .
 
+  docker run --rm --init --user "$(id -u):$(id -g)" --volume "$(pwd)":/.buildkite --workdir=/.buildkite node-buildkite:latest ls -la
+
 npm() {
   docker run --rm --init --user "$(id -u):$(id -g)" --volume "$(pwd)":/.buildkite --workdir=/.buildkite node-buildkite:latest npm "$@"
 }
