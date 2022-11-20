@@ -12,20 +12,18 @@ trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
 cd .buildkite
 
-echo --- :docker: Build image
+echo --- :docker::node: Build image
 docker buildx build \
   --progress=plain \
   -t node-buildkite:latest \
   .
 
-docker run --rm --init node-buildkite:latest ls -lA
-
 npm() {
   docker run --rm --init node-buildkite:latest npm "$@"
 }
 
-echo --- :pipeline: Generate Pipeline
-npm run generate-pipeline
+echo --- :pipeline::node::typscript: Generate Pipeline
+npm run generate-pipeline > pipeline.json
 
 echo -- :pipeline: Upload Pipeline
 buildkite-agent pipeline upload pipeline.json
