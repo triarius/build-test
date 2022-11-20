@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "compile": "npx tsc pipeline.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "typescript": "^4.9.3"
+  }
+}

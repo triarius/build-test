@@ -1,0 +1,3 @@
+[submodule ".buildkite/pipeline-schema"]
+	path = .buildkite/pipeline-schema
+	url = git@github.com:buildkite/pipeline-schema.git
