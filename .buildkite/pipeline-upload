@@ -25,5 +25,5 @@ npm() {
 echo --- :pipeline::node::typescript: Generate Pipeline
 npm run --silent generate-pipeline > pipeline.json
 
-echo -- :pipeline: Upload Pipeline
+echo --- :pipeline: Upload Pipeline
 buildkite-agent pipeline upload pipeline.json
