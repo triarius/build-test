@@ -20,10 +20,10 @@ docker buildx build \
   .
 
 npm() {
-  docker run --rm --init --user "$(id -u):$(id -g)" --volume "$(pwd)":/.buildkite node:18-alpine npm "$@"
+  docker run --rm --init --user "$(id -u):$(id -g)" --volume "$(pwd)":/.buildkite node-buildkite:latest npm "$@"
 }
 
-echo --- :node: npm install
+echo --- :node: Install packages
 npm clean-install
 
 echo --- :pipeline: Generate Pipeline
