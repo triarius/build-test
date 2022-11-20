@@ -8,12 +8,9 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
 
 steps:
-  - name: versions
-    label: ":bash:"
+  - label: ":buildkite::bash: Print versions"
     command: ./version.sh
-  - name: jwt
-    label: ":key: Obtain JWTs"
+  - label: ":key: Obtain JWTs"
     command: ./jwt.sh
   - label: List files
-    name: list_files
     command: ./run.sh
