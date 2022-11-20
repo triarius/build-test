@@ -6,8 +6,12 @@ env:
 steps:
   - name: versions
     label: ":bash:"
-    command: ./run.sh
-    plugins:
-      - file://./.buildkite/plugins/vendored
+    command: ./version.sh
+    agents:
+      queue: ${PIPELINE_QUEUE:-default}
+  - block: ":lock: JWT"
+  - name: JWT
+    label: ":key: JWT"
+    command: ./jwt.sh
     agents:
       queue: ${PIPELINE_QUEUE:-default}
