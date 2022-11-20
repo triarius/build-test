@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "compile": "npx tsc",
-    "generate-pipeline": "npm run compile && node dist/pipeline.js"
+    "generate-pipeline": "npm ci && npm run compile && node dist/pipeline.js"
   },
   "devDependencies": {
     "@triarius/pipeline-schema": "^0.1.0",
