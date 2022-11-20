@@ -21,7 +21,7 @@ docker buildx build \
   .
 
 npm() {
-  docker run --rm --init --user "$(id -u):$(id -g)" --volume "$(pwd)":/.buildkite node-buildkite:latest npm "$@"
+  docker run --rm --init --user "$(id -u):$(id -g)" --volume "$(pwd)":/.buildkite --workdir=/.buildkite node-buildkite:latest npm "$@"
 }
 
 echo --- :node: Install packages
