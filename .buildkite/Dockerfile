@@ -21,3 +21,6 @@ RUN <<EOF
 EOF
 
 USER ${USER_ID:?}:${GROUP_ID:?}
+
+WORKDIR /.buildkite
+COPY . /.buildkite/

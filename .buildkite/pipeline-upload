@@ -11,7 +11,6 @@ failure() {
 trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
 cd .buildkite
-ls -lA
 
 echo --- :docker: Build image
 docker buildx build \
@@ -21,10 +20,8 @@ docker buildx build \
   -t node-buildkite:latest \
   .
 
-docker run --rm --init --user "$(id -u):$(id -g)" --volume "$(pwd)":/.buildkite --workdir=/.buildkite node-buildkite:latest ls -la
-
 npm() {
-  docker run --rm --init --user "$(id -u):$(id -g)" --volume "$(pwd)":/.buildkite --workdir=/.buildkite node-buildkite:latest npm "$@"
+  docker run --rm --init --user "$(id -u):$(id -g)" node-buildkite:latest npm "$@"
 }
 
 echo --- :node: Install packages
