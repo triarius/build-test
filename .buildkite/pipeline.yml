@@ -2,27 +2,18 @@ dag: true
 
 env:
   LEVEL: "pipeline"
+  BUILDKITE_PLUGINS_ALWAYS_CLONE_FRESH: "true"
+
+agents:
+  queue: ${PIPELINE_QUEUE:-default}
 
 steps:
   - name: versions
     label: ":bash:"
     command: ./version.sh
-    agents:
-      queue: ${PIPELINE_QUEUE:-default}
   - name: jwt
     label: ":key: Obtain JWTs"
     command: ./jwt.sh
-  - label: List file
+  - label: List files
     name: list_files
     command: ./run.sh
-    env:
-      BUILDKITE_PLUGINS_ALWAYS_CLONE_FRESH: "true"
-    plugins:
-      - triarius/git-lfs-fetch#main: ~
-  - command: ./run.sh
-    env:
-      BUILDKITE_PLUGINS_ALWAYS_CLONE_FRESH: "true"
-    plugins:
-      - triarius/git-lfs-pull#v0.1.0: {}
-    agents:
-      queue: ${PIPELINE_QUEUE:-default}
