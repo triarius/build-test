@@ -28,7 +28,7 @@ echo --- :node: Install packages
 npm clean-install
 
 echo --- :pipeline: Generate Pipeline
-npm run --silent generate-pipeline > pipeline.json
+npm run generate-pipeline
 
 echo -- :pipeline: Upload Pipeline
 buildkite-agent pipeline upload pipeline.json
