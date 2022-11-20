@@ -22,8 +22,8 @@ npm() {
   docker run --rm --init node-buildkite:latest npm "$@"
 }
 
-echo --- :pipeline::node::typscript: Generate Pipeline
-npm run generate-pipeline > pipeline.json
+echo --- :pipeline::node::typescript: Generate Pipeline
+npm run --silent generate-pipeline > pipeline.json
 
 echo -- :pipeline: Upload Pipeline
 buildkite-agent pipeline upload pipeline.json
