@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -Eeufxo pipefail
+set -Eeufo pipefail
 
 echo Hello from Build "$BUILDKITE_BUILD_NUMBER" > hello.txt
 
