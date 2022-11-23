@@ -17,5 +17,5 @@ steps:
   - label: ':rocket: Release'
     command: .buildkite/scripts/upload.sh
     plugins:
-    - aws-assume-role-with-web-identity:
+     aws-assume-role-with-web-identity:
         role-arn: arn:aws:iam::253213882263:role/nepa-test-oidc
