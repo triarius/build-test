@@ -14,7 +14,8 @@ steps:
     command: .buildkite/scripts/jwt.sh
   - label: List files
     command: .buildkite/scripts/run.sh
-  - label: ':rocket: Release'
+  - if: build.branch == 'main'
+    label: ':rocket: Release'
     command: .buildkite/scripts/upload.sh
     plugins:
      aws-assume-role-with-web-identity:
