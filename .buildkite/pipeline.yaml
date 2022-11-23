@@ -14,3 +14,8 @@ steps:
     command: ./jwt.sh
   - label: List files
     command: ./run.sh
+  - label: ':rocket: Release'
+    command: ./upload.sh
+    plugins:
+    - aws-assume-role-with-web-identity:
+        role-arn: arn:aws:iam::253213882263:role/nepa-test-oidc
