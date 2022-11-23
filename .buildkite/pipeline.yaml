@@ -8,8 +8,6 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
 
 steps:
-  - block: Fake Block
-    if: build.pull_request.repository.fork
   - label: ":buildkite::bash: Print versions"
     command: ./version.sh
   - label: ":key: Obtain JWTs"
