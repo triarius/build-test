@@ -9,8 +9,14 @@ agents:
 
 steps:
   - label: ":buildkite::bash: Print versions"
-    command: ./version.sh
+    command: .buildkite/scripts/version.sh
   - label: ":key: Obtain JWTs"
-    command: ./jwt.sh
+    command: .buildkite/scripts/jwt.sh
   - label: List files
-    command: ./run.sh
+    command: .buildkite/scripts/run.sh
+  - if: build.branch == 'main'
+    label: ':rocket: Release'
+    command: .buildkite/scripts/upload.sh
+    plugins:
+     aws-assume-role-with-web-identity:
+        role-arn: arn:aws:iam::253213882263:role/nepa-test-oidc
