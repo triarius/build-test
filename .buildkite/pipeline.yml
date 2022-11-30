@@ -1,11 +1,5 @@
+agents:
+  queue: ${PIPELINE_QUEUE:-default}
 dag: true
-
-env:
-  LEVEL: "pipeline"
-
 steps:
   - command: ./run.sh
-    plugins:
-      -  file://./.buildkite/plugins/vendored
-    agents:
-      queue: ${PIPELINE_QUEUE:-default}
