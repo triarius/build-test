@@ -1,5 +1,11 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
-dag: true
 steps:
-  - command: ./run.sh
+  - label: step 1
+    command: if [ $BRANCH=master ]; then buildkite-agent meta-data set "RUN_PIPELINE" true; fi
+  - label: step 2
+    command: |
+      SHOULD_RUN=$(buildkite-agent meta-data get "RUN_PIPELINE")
+      if [ $SHOULD_RUN=true ]; then echo "deploy"; fi
+  - label: step 3
+    command: Notify people
