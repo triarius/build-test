@@ -4,6 +4,7 @@ env:
   LEVEL: "pipeline"
 
 steps:
-  - command: .buildkite/scripts/run.sh
+  - label: ":run: Run"
+    command: .buildkite/scripts/run.sh
     agents:
       queue: ${PIPELINE_QUEUE:-default}
