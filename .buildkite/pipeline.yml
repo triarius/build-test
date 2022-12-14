@@ -1,8 +1,4 @@
 dag: true
-
-env:
-  LEVEL: "pipeline"
-
 steps:
   - label: ":run: Run"
     command: .buildkite/scripts/run.sh
