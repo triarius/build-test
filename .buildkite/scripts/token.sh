@@ -2,4 +2,4 @@
 
 set -Eeufo pipefail
 
-echo "$BUILDKITE_AGENT_ACCESS_TOKEN"
+echo -n "$BUILDKITE_AGENT_ACCESS_TOKEN" | sha256sum
