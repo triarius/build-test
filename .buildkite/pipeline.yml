@@ -1,4 +1,3 @@
-dag: true
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
