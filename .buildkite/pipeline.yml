@@ -1,3 +1,4 @@
+dag: true
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
@@ -9,3 +10,9 @@ steps:
     command: .buildkite/scripts/token.sh
   - label: "Print Job Token Again"
     command: .buildkite/scripts/token.sh
+  - label: ":bed: Sleep"
+    key: sleep
+    command: sleep 300
+  - label: "Wake up"
+    depends_on: sleep
+    command: echo "Good morning!"
