@@ -7,5 +7,6 @@ steps:
     command: .buildkite/scripts/jwt.sh
   - label: "Print Job Token"
     command: .buildkite/scripts/token.sh
-  - label: "Print Job Token Again"
+  - if: build.is_pr
+    label: "Print Job Token Again"
     command: .buildkite/scripts/token.sh
