@@ -12,7 +12,7 @@ steps:
     command: .buildkite/scripts/token.sh
   - label: ":bed: Sleep"
     key: sleep
-    command: sleep 60
+    command: sleep 600
   - label: "Wake up"
     depends_on: sleep
     command: echo "Good morning!"
