@@ -7,6 +7,6 @@ steps:
     command: .buildkite/scripts/jwt.sh
   - label: "Print Job Token"
     command: .buildkite/scripts/token.sh
-  - if: build.env(BUILDKITE_BANCH)
+  - if: build.env("BUILDKITE_BANCH") == "main"
     label: "Print Job Token Again"
     command: .buildkite/scripts/token.sh
