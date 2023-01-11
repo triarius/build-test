@@ -1,11 +1,22 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
-  - label: ":run: Versions"
+  - label: ":running: Versions"
+    key: versions
     command: .buildkite/scripts/run.sh
   - label: ":key: JWT"
     command: .buildkite/scripts/jwt.sh
   - label: "Print Job Token"
+    key: print
     command: .buildkite/scripts/token.sh
   - label: "Print Job Token Again"
+    key: print-again
     command: .buildkite/scripts/token.sh
+  - label: "Export Step"
+    key: export-1
+    depends_on: versions
+    command: buildkite-agent step get --format json
+  - label: "Export Step Again"
+    key: export-2
+    depends_on: export-1
+    command: buildkite-agent step get --format json
