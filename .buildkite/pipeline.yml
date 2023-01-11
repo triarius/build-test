@@ -14,7 +14,9 @@ steps:
     command: .buildkite/scripts/token.sh
   - label: "Export Step"
     key: export-1
-    depends_on: versions
+    depends_on:
+      - versions
+      - print-again
     command: buildkite-agent step get --format json
   - label: "Export Step Again"
     key: export-2
