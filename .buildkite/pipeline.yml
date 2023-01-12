@@ -19,7 +19,16 @@ steps:
       - step: print-again
         allow_failure: true
     command: buildkite-agent step get --format json
+  - label: "Export Step as Text"
+    key: export-text
+    depends_on:
+      - versions
+      - step: print-again
+        allow_failure: true
+    command: buildkite-agent step get --format text
   - label: "Export Step Again"
     key: export-2
-    depends_on: export-1
+    depends_on:
+      - export-1
+      - export-text
     command: buildkite-agent step get --format json
