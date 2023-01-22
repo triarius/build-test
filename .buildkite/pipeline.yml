@@ -1,7 +1,7 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
-  - label: ":run: Versions"
+  - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
   - label: ":key: JWT"
     command: .buildkite/scripts/jwt.sh
