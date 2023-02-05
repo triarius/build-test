@@ -6,22 +6,28 @@ steps:
       echo "relative llamas" > llamas.txt
       buildkite-agent artifact upload llamas.txt
       rm llamas.txt
-      buildkite-agent artifact search "*" --format '%S %p\n'
-
-      expected_shasum=fb60f84c2bd316e18a2f11e4da13684e41a16f31
       shasum=$(buildkite-agent artifact shasum llamas.txt)
-      [[ \$shasum == \$expected_shasum ]] || echo expected: \$expected_shasum received: \$shasum && false
+      echo \$shasum
+      expected_shasum=fb60f84c2bd316e18a2f11e4da13684e41a16f31
+      echo \$expected_shasum
+      if [[ \$shasum != \$expected_shasum ]]; then
+        echo expected: \$expected_shasum received: \$shasum
+        exit 1
+      fi
 
   - label: upload absolute artifact
     command: |
       echo "absolute llamas" > /tmp/llamas.txt
       buildkite-agent artifact upload /tmp/llamas.txt
       rm /tmp/llamas.txt
-      buildkite-agent artifact search "*" --format '%S %p\n'
-
+      shasum=$(buildkite-agent artifact shasum tmp/llamas.txt)
+      echo \$shasum
       expected_shasum=9ce999892fbca0da31b2a781b2730ac11a2fc8a2
-      shasum=$(buildkite-agent artifact shasum /tmp/llamas.txt)
-      [[ \$shasum == \$expected_shasum ]] || echo expected: \$expected_shasum received: \$shasum && false
+      echo \$expected_shasum
+      if [[ \$shasum != \$expected_shasum ]]; then
+        echo expected: \$expected_shasum received: \$shasum
+        exit 1
+      fi
 
   - wait
 
