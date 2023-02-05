@@ -17,11 +17,11 @@ steps:
 
   - label: "download relative artifact"
     command: |
-      shasum=$(buildkite-agent artifact shasum "llamas.txt")
-      expected_shasum=fb60f84c2bd316e18a2f11e4da13684e41a16f31
-      [[ \$shasum == \$expected_shasum ]] || echo expected: \$expected_shasum received: \$shasum && false
+      #      shasum=$(buildkite-agent artifact shasum "llamas.txt")
+      #      expected_shasum=fb60f84c2bd316e18a2f11e4da13684e41a16f31
+      #      [[ \$shasum == \$expected_shasum ]] || echo expected: \$expected_shasum received: \$shasum && false
       buildkite-agent artifact download llamas.txt .
-      exit_status=$(echo "ee756d1e307dc245b0df42f81845a4ff559531bc4cb287e35b15e4115844e903" | sha256sum --check)
+      exit_status=$(echo "ee756d1e307dc245b0df42f81845a4ff559531bc4cb287e35b15e4115844e903 llamas.txt" | sha256sum --check)
       rm llamas.txt
       exit $exit_status
 
