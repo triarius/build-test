@@ -1,15 +1,6 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
-  - label: ":running: Versions"
-    command: .buildkite/scripts/run.sh
-  - label: ":key: JWT"
-    command: .buildkite/scripts/jwt.sh
-  - label: "Print Job Token"
-    command: .buildkite/scripts/token.sh
-  - label: "Print Job Token Again"
-    command: .buildkite/scripts/token.sh
-
   - label: "upload relative artifact"
     command: |
       echo "relative llamas" > llamas.txt
