@@ -3,13 +3,15 @@ agents:
 steps:
   - label: upload relative artifact
     command: |
+      set -Eeufo pipefail
+
+      trap "rm llamas.txt" EXIT
+
       echo "relative llamas" > llamas.txt
       buildkite-agent artifact upload llamas.txt
-      rm llamas.txt
+
       shasum=$(buildkite-agent artifact shasum llamas.txt)
-      echo \$shasum
       expected_shasum=fb60f84c2bd316e18a2f11e4da13684e41a16f31
-      echo \$expected_shasum
       if [[ \$shasum != \$expected_shasum ]]; then
         echo expected: \$expected_shasum received: \$shasum
         exit 1
@@ -17,13 +19,15 @@ steps:
 
   - label: upload absolute artifact
     command: |
+      set -Eeufo pipefail
+
+      trap "rm /tmp/llamas.txt" EXIT
+
       echo "absolute llamas" > /tmp/llamas.txt
       buildkite-agent artifact upload /tmp/llamas.txt
-      rm /tmp/llamas.txt
+
       shasum=$(buildkite-agent artifact shasum tmp/llamas.txt)
-      echo \$shasum
       expected_shasum=9ce999892fbca0da31b2a781b2730ac11a2fc8a2
-      echo \$expected_shasum
       if [[ \$shasum != \$expected_shasum ]]; then
         echo expected: \$expected_shasum received: \$shasum
         exit 1
@@ -33,14 +37,18 @@ steps:
 
   - label: download relative artifact
     command: |
-      buildkite-agent artifact download llamas.txt .
-      exit_status=$(echo "ee756d1e307dc245b0df42f81845a4ff559531bc4cb287e35b15e4115844e903 llamas.txt" | sha256sum --check)
-      rm llamas.txt
-      exit $exit_status
+      set -Eeufo pipefail
 
-  - label: "download absolute artifact"
+      trap "rm llamas.txt" EXIT
+
+      buildkite-agent artifact download llamas.txt .
+      echo "ee756d1e307dc245b0df42f81845a4ff559531bc4cb287e35b15e4115844e903 llamas.txt" | sha256sum --check
+
+  - label: download absolute artifact
     command: |
+      set -Eeufo pipefail
+
+      trap "rm tmp/llamas.txt" EXIT
+
       buildkite-agent artifact download tmp/llamas.txt .
-      exit_status=$(echo "e14227c78a206decdf9e869aaa2c44f3ff546a8324874e7442ef02b1f41a0099 tmp/llamas.txt" | sha256sum --check)
-      rm tmp/llamas.txt
-      exit $exit_status
+      echo "e14227c78a206decdf9e869aaa2c44f3ff546a8324874e7442ef02b1f41a0099 tmp/llamas.txt" | sha256sum --check
