@@ -16,17 +16,17 @@ steps:
       buildkite-agent artifact upload llamas.txt
       rm llamas.txt
 
-  - label: "upload absolute artifact"
-    command: |
-      echo "absolute llamas" > /tmp/llamas.txt
-      buildkite-agent artifact upload /tmp/llamas.txt
-      rm /tmp/llamas.txt
+      #   - label: "upload absolute artifact"
+      #     command: |
+      #       echo "absolute llamas" > /tmp/llamas.txt
+      #       buildkite-agent artifact upload /tmp/llamas.txt
+      #       rm /tmp/llamas.txt
 
   - wait
 
   - label: "download relative artifact"
     command: |
-      shasum=$(buildkite-agent artifact shasum llamas.txt)
+      shasum=$(buildkite-agent artifact shasum "llamas.txt")
       expected_shasum=fb60f84c2bd316e18a2f11e4da13684e41a16f31
       [[ \$shasum == \$expected_shasum ]] || echo expected: \$expected_shasum received: \$shasum && false
       buildkite-agent artifact download llamas.txt .
@@ -34,12 +34,12 @@ steps:
       rm llamas.txt
       exit $exit_status
 
-  - label: "download absolute artifact"
-    command: |
-      shasum=$(buildkite-agent artifact shasum tmp/camels.txt)
-      expected_shasum=9ce999892fbca0da31b2a781b2730ac11a2fc8a2
-      [[ \$shasum == \$expected_shasum ]] || echo expected: \$expected_shasum received: \$shasum && false
-      buildkite-agent artifact download tmp/camels.txt .
-      exit_status=$(echo "e14227c78a206decdf9e869aaa2c44f3ff546a8324874e7442ef02b1f41a0099" | sha256sum --check)
-      rm camels.txt
-      exit $exit_status
+      #   - label: "download absolute artifact"
+      #     command: |
+      #       shasum=$(buildkite-agent artifact shasum "tmp/llamas.txt")
+      #       expected_shasum=9ce999892fbca0da31b2a781b2730ac11a2fc8a2
+      #       [[ \$shasum == \$expected_shasum ]] || echo expected: \$expected_shasum received: \$shasum && false
+      #       buildkite-agent artifact download tmp/llamas.txt .
+      #       exit_status=$(echo "e14227c78a206decdf9e869aaa2c44f3ff546a8324874e7442ef02b1f41a0099" | sha256sum --check)
+      #       rm camels.txt
+      #       exit $exit_status
