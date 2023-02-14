@@ -10,11 +10,11 @@ failure() {
 
 trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
-docker buildx build --progress=plain -t jwt:latest .
-
-function jwt {
-  docker run --rm -i -e FORCE_COLOR=3 jwt:latest
-}
+# docker buildx build --progress=plain -t jwt:latest .
+#
+# function jwt {
+#   docker run --rm -i -e FORCE_COLOR=3 jwt:latest
+# }
 
 
 echo --- :key: OIDC Tokens
