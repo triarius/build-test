@@ -19,4 +19,4 @@ trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
 echo --- :key: OIDC Tokens
 
-buildkite-agent oidc request-token
+buildkite-agent oidc request-token --claim organization_id --claim pipeline_id
