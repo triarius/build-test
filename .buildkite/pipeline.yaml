@@ -1,3 +1,5 @@
+env:
+  BUILDKITE_REDACTED_VARS: ""
 steps:
   - label: plugin
     plugins:
