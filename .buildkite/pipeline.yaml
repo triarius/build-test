@@ -1,21 +1,9 @@
-x-anchors:
-  a: &a
-    a: *a
-agents:
-  queue: ${PIPELINE_QUEUE:-default}
 steps:
-  - label: ":running: Versions"
-    command: .buildkite/scripts/run.sh
-  - label: ":key: JWT"
-    command: .buildkite/scripts/jwt.sh
-  - label: "Print Job Token"
-    command: .buildkite/scripts/token.sh
-  - label: "Print Job Token Again"
-    command: .buildkite/scripts/token.sh
   - label: plugin
     plugins:
       - kubernetes:
-          a: *a
+          a: &a
+            a: *a
     matrix:
       setup:
         arch:
