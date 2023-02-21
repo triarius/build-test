@@ -1,3 +1,6 @@
+x-anchors:
+  a: &a
+    a: *a
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
@@ -9,3 +12,12 @@ steps:
     command: .buildkite/scripts/token.sh
   - label: "Print Job Token Again"
     command: .buildkite/scripts/token.sh
+  - label: plugin
+    plugins:
+      - kubernetes:
+          a: *a
+    matrix:
+      setup:
+        arch:
+          - arm64
+          - amd64
