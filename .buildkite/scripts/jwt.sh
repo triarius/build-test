@@ -22,4 +22,3 @@ buildkite-agent oidc request-token | jwt
 buildkite-agent oidc request-token --audience sts.amazonaws.com | jwt
 buildkite-agent oidc request-token --audience sts.amazonaws.com --lifetime 0 | jwt
 buildkite-agent oidc request-token --audience sts.amazonaws.com --lifetime 600 | jwt
-buildkite-agent oidc request-token --claim organization_id --claim pipeline_id | jwt
