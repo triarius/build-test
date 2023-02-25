@@ -2,7 +2,7 @@
 
 set -Eeufo pipefail
 
-sudo docker run --privileged --userns=host --rm "tonistiigi/binfmt:qemu-v6.2.0" --install all
+docker run --privileged --userns=host --rm "tonistiigi/binfmt:qemu-v6.2.0" --install all
 
 builder_name=$(docker buildx create --use)
 # shellcheck disable=SC2064 # we want the current $builder_name to be trapped, not the runtime one
