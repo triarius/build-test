@@ -32,9 +32,9 @@ steps:
   - label: Next Step 1
     key: next-step-1
     depends_on: end-gate
-    command: echo next step 1
+    command: sleep $$(($${POST_DEPLOY_DURATION:-1}))
 
   - label: Next Step 2
     key: next-step-2
     depends_on: end-gate
-    command: echo next step 2
+    command: sleep $$(($${POST_DEPLOY_DURATION:-1}))
