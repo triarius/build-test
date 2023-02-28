@@ -18,3 +18,7 @@ steps:
     trigger: deploy-pipeline
     depends_on: sleep
     async: true
+    build:
+      branch: deploy-trigger
+      env:
+        DEPLOY_DURATION: ${DEPLOY_DURATION:-0}
