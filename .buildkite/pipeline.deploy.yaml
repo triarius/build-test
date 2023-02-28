@@ -1,0 +1,40 @@
+steps:
+  - label: Starting deployment
+    key: start
+    command: "true"
+
+  - label: Begin Gate
+    key: start-gate
+    depends_on: start
+    command: "true"
+    concurrency_group: deploy/gate
+    concurrency: 1
+
+  - label: deploy-1
+    key: deploy-1
+    command: sleep $${DEPLOY_DURATION:-1}
+    depends_on: start-gate
+
+  - label: deploy-2
+    key: deploy-2
+    command: sleep $$(($${DEPLOY_DURATION:-1} + 1))
+    depends_on: deploy-1
+
+  - label: End Gate
+    key: end-gate
+    depends_on:
+      - deploy-1
+      - deploy-2
+    command: "true"
+    concurrency_group: deploy/gate
+    concurrency: 1
+
+  - label: Next Step 1
+    key: next-step-1
+    depends_on: end-gate
+    command: echo next step 1
+
+  - label: Next Step 2
+    key: next-step-2
+    depends_on: end-gate
+    command: echo next step 2

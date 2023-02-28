@@ -9,3 +9,12 @@ steps:
     command: .buildkite/scripts/token.sh
   - label: "Print Job Token Again"
     command: .buildkite/scripts/token.sh
+
+  - label: Sleep
+    key: sleep
+    command: sleep $${TEST_DURATION:-5}
+
+  - label: Trigger Deploy
+    trigger: deploy-pipeline
+    depends_on: sleep
+    async: true
