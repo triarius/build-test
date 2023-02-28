@@ -26,8 +26,8 @@ steps:
       - deploy-1
       - deploy-2
     command: "true"
-    # concurrency_group: deploy/gate
-    # concurrency: 1
+    concurrency_group: deploy/gate
+    concurrency: 1
 
   - label: Next Step 1
     key: next-step-1
