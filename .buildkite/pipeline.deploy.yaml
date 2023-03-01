@@ -6,7 +6,6 @@ steps:
   - label: Begin Gate
     key: start-gate
     depends_on: start
-    command: "true"
     concurrency_group: deploy/gate
     concurrency: 1
 
@@ -25,7 +24,6 @@ steps:
     depends_on:
       - deploy-1
       - deploy-2
-    command: "true"
     concurrency_group: deploy/gate
     concurrency: 1
 
