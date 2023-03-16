@@ -9,3 +9,5 @@ steps:
     command: .buildkite/scripts/token.sh
   - label: "Print Job Token Again"
     command: .buildkite/scripts/token.sh
+  - label: Env
+    command: env
