@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-buildkite-agent env set A=b
+set -eufo pipefail
+
 export A=a
+buildkite-agent env set A=b
