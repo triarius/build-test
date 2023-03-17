@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-export A=a
 buildkite-agent env set A=b
