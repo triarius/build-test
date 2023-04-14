@@ -6,7 +6,6 @@ steps:
     plugins:
       - docker#v3.5.0:
           image: "buildkite/agent:3.44.0"
-          entrypoint: bash
           propagate-environment: true
   - label: ":key: JWT"
     command: .buildkite/scripts/jwt.sh
