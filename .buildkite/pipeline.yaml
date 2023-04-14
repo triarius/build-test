@@ -3,6 +3,11 @@ agents:
 steps:
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
+    plugins:
+      - docker#v3.5.0:
+          image: "buildkite/agent:3.45.0"
+          entrypoint: bash
+          propagate-environment: true
   - label: ":key: JWT"
     command: .buildkite/scripts/jwt.sh
   - label: "Print Job Token"
