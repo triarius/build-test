@@ -1,6 +1,8 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
+  - label: sudo
+    command: cat /etc/sudoers
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
   - label: ":key: JWT"
