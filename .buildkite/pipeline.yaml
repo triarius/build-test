@@ -3,8 +3,8 @@ agents:
 steps:
   - key: test
     label: ":running: Versions"
-      # command: sleep 120
-    command: "false"
+    command: sleep 120
+      # command: "false"
     timeout_in_minutes: 1
   - label: dependent
     command: "true"
