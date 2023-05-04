@@ -3,6 +3,7 @@ agents:
 steps:
   - group: ":test_tube: run cluster tests"
     key: test
+    allow_dependency_failure: true
     steps:
     - label: ":running: Versions"
       command: "false"
