@@ -6,8 +6,10 @@ steps:
     command: sleep 120
       # command: "false"
     timeout_in_minutes: 1
+    soft_fail:
+      - exit_status: -1
+      - exit_status: 255
   - label: dependent
     command: "true"
-    allow_dependency_failure: true
     depends_on:
     - test
