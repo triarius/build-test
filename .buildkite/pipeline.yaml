@@ -7,18 +7,10 @@ steps:
     - label: ":running: Versions"
       command: sleep 120
       timeout_in_minutes: 1
-  - if: build.env("DEBUG") == "true"
-    key: block-destroy-staging
-    block: destroy staging?
-    prompt: Clicking "Ok" will tear down the test cluster created for this build.
-    label: should we tear down?
-    depends_on: test
-    allow_dependency_failure: true
   - key: destroy-staging
     async: true
     label: tear down test cluster
     trigger: nepa-test-2
     allow_dependency_failure: true
     depends_on:
-    - block-destroy-staging
     - test
