@@ -7,10 +7,8 @@ steps:
     - label: ":running: Versions"
       command: sleep 120
       timeout_in_minutes: 0
-  - key: destroy-staging
-    async: true
-    label: tear down test cluster
-    trigger: nepa-test-2
+  - label: dependant
+    command: "true"
     allow_dependency_failure: true
     depends_on:
     - test
