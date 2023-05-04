@@ -1,11 +1,23 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
-  - label: ":running: Versions"
-    command: .buildkite/scripts/run.sh
-  - label: ":key: JWT"
-    command: .buildkite/scripts/jwt.sh
-  - label: "Print Job Token"
-    command: .buildkite/scripts/token.sh
-  - label: "Print Job Token Again"
-    command: .buildkite/scripts/token.sh
+  - group: ":test_tube: run cluster tests"
+    key: test
+    steps:
+    - label: ":running: Versions"
+      command: "false"
+      timeout_in_minutes: 1
+  - if: build.env("DEBUG") == "true"
+    key: block-destroy-staging
+    block: destroy staging?
+    prompt: Clicking "Ok" will tear down the test cluster created for this build.
+    label: should we tear down?
+    depends_on: test
+    allow_dependency_failure: true
+  - key: destroy-staging
+    async: true
+    label: tear down test cluster
+    trigger: nepa-test-2
+    depends_on:
+    - block-destroy-staging
+    - test
