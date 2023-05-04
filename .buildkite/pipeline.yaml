@@ -1,13 +1,11 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
-  - group: ":test_tube: run cluster tests"
-    key: test
-    steps:
-    - label: ":running: Versions"
-      command: sleep 120
-      timeout_in_minutes: 1
-  - label: dependant
+  - key: test
+    label: ":running: Versions"
+    command: sleep 120
+    timeout_in_minutes: 1
+  - label: dependent
     command: "true"
     allow_dependency_failure: true
     depends_on:
