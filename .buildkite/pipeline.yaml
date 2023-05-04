@@ -6,7 +6,7 @@ steps:
     steps:
     - label: ":running: Versions"
       command: sleep 120
-      timeout_in_minutes: 0
+      timeout_in_minutes: 1
   - label: dependant
     command: "true"
     allow_dependency_failure: true
