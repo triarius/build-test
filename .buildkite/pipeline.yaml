@@ -4,4 +4,4 @@ steps:
   - label: "🔨 Tests"
     command:
       - echo "Testing Symlinks, creating"
-      - buildkite-agent artifact upload --upload-symlinks=false "symlinks/**/*"
+      - buildkite-agent artifact upload --upload-symlinks=false --follow-symlinks "symlinks/**/*"
