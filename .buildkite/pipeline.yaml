@@ -2,6 +2,6 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
   - label: "🔨 Tests"
-    artifact_paths: symlinks/**/*
     command:
       - echo "Testing Symlinks, creating"
+      - buildkite-agent artifact upload --no-upload-symlinks "symlinks/**/*"
