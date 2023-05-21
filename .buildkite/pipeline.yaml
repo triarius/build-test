@@ -11,5 +11,6 @@ steps:
       - exit_status: 255
   - label: dependent
     command: "true"
+    allow_dependency_failure: true
     depends_on:
     - test
