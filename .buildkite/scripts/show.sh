@@ -11,7 +11,7 @@ mkdir -p "artifacts/$BUILDKITE_BUILD_NUMBER"
 curl -sSL https://buildkite.com/_site/favicon.png > "artifacts/${BUILDKITE_BUILD_NUMBER}/logo.png"
 curl -sSL https://buildkite.com/_site/favicon.png > "artifacts/${BUILDKITE_BUILD_NUMBER}/logo 1.png"
 
-buildkite-agent artrifact upload 'artifacts/**/*.png'
+buildkite-agent artifact upload 'artifacts/**/*.png'
 
 inline_image "artifact://artifacts/$BUILDKITE_BUILD_NUMBER/logo.png" 'OMG'
 inline_image "artifact://artifacts/$BUILDKITE_BUILD_NUMBER/logo 1.png" 'OMG'
