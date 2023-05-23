@@ -2,11 +2,12 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
   - label: upload automatic artifact
-    artifact_paths: artifacts/**/*.txt
+    artifact_paths: artifacts/**/*
     command: |
       set -Eeufo pipefail
       mkdir -p artifacts/${BUILDKITE_BUILD_NUMBER}
       echo "automatic llamas" > artifacts/${BUILDKITE_BUILD_NUMBER}/llamas.txt
+      curl -sSL https://buildkite.com/_site/favicon.png > artifacts/${BUILDKITE_BUILD_NUMBER}/logo.png
 
   - label: upload relative artifact
     command: |
