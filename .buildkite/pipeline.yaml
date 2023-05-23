@@ -1,6 +1,13 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
+  - label: upload automatic artifact
+    artifact_paths: artifacts/**/*.txt
+    command: |
+      set -Eeufo pipefail
+      mkdir -p artifacts/${BUILDKITE_BUILD_NUMBER}
+      echo "automatic llamas" > artifacts/${BUILDKITE_BUILD_NUMBER}/llamas.txt
+
   - label: upload relative artifact
     command: |
       set -Eeufo pipefail
