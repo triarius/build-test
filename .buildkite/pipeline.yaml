@@ -8,5 +8,5 @@ steps:
           role-arn: arn:aws:iam::253213882263:role/nepa-test-get-parameter
       - triarius/aws-ssm:
           parameters:
-            "1Variable+": /nepa/nepas-test-org/test-parameter
             "=1Variable": /nepa/nepas-test-org/test-parameter
+            "1Variable+": /nepa/nepas-test-org/test-parameter
