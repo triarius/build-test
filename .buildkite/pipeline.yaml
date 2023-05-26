@@ -1,11 +1,10 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
-  - label: test parameter
-    command: echo "$$BUNDLE_GEMS__CONTRIBSYS__COM"
+  - label: Test Plugin Env
     plugins:
-      - aws-assume-role-with-web-identity:
-          role-arn: arn:aws:iam::253213882263:role/nepa-test-get-parameter
-      - aws-ssm:
+      - .buildkite/plugins/env-tester:
+          foo:
+            bar: 1
           parameters:
             BUNDLE_GEMS__CONTRIBSYS__COM: /nepa/nepas-test-org/test-parameter
