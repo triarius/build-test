@@ -2,4 +2,4 @@
 
 set -Eeufo pipefail
 
-env | grep PLUGIN
+env | grep '^BUILDKITE_PLUGIN'
