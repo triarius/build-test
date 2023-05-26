@@ -6,6 +6,6 @@ steps:
     plugins:
       - aws-assume-role-with-web-identity:
           role-arn: arn:aws:iam::253213882263:role/nepa-test-get-parameter
-      - triarius/aws-ssm#050f04af5f932c5beb4e5b68b214b894fce0ba64:
+      - aws-ssm:
           parameters:
             BUNDLE_GEMS__CONTRIBSYS__COM: /nepa/nepas-test-org/test-parameter
