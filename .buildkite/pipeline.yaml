@@ -1,12 +1,3 @@
-agents:
-  queue: ${PIPELINE_QUEUE:-default}
 steps:
-  - key: test
-    label: ":running: Versions"
-    command: sleep 120
-      # command: "false"
-    timeout_in_minutes: 1
   - label: dependent
     command: "true"
-    depends_on:
-    - test
