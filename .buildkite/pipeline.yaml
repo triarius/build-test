@@ -8,9 +8,5 @@ steps:
     timeout_in_minutes: 1
   - label: dependent
     command: "true"
-    allow_dependency_failure:
-      states:
-        - timed_out
-        - failed
     depends_on:
     - test
