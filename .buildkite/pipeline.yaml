@@ -4,5 +4,5 @@ steps:
   - label: test parameter
     command: echo I am doing 🆒 stuff with the role that that I have!
     plugins:
-      - aws-assume-role-with-web-identity:
+      - triarius/aws-assume-role-with-web-identity#dont-expand-logs:
           role-arn: arn:aws:iam::253213882263:role/nepa-test-get-parameter
