@@ -5,4 +5,4 @@ steps:
     command: echo I am doing 🆒 stuff with the role that that I have!
     plugins:
       - triarius/aws-assume-role-with-web-identity#dont-expand-logs:
-          role-arn: arn:aws:iam::253213882263:role/nepa-test-get-parameter
+          role-arn: arn:aws:iam::253213882263:role/nepa-test-get-parameter4e
