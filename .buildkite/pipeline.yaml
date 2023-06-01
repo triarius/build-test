@@ -2,7 +2,7 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
   - label: test parameter
-    command: echo "$$BUNDLE_GEMS__CONTRIBSYS__COM"
+    command: sha256sum <<< "$$BUNDLE_GEMS__CONTRIBSYS__COM"
     plugins:
       - triarius/aws-assume-role-with-web-identity#dont-expand-logs:
           role-arn: arn:aws:iam::253213882263:role/nepa-test-get-parameter
