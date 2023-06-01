@@ -4,7 +4,7 @@ steps:
   - label: test parameter
     command: sha256sum <<< "$$BUNDLE_GEMS__CONTRIBSYS__COM"
     plugins:
-      - triarius/aws-assume-role-with-web-identity#dont-expand-logs:
+      - aws-assume-role-with-web-identity:
           role-arn: arn:aws:iam::253213882263:role/nepa-test-get-parameter
       - aws-ssm:
           parameters:
