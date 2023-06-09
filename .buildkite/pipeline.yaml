@@ -10,7 +10,7 @@ steps:
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
     agents:
-      buildkite-aws-stack: v5.21.0-7-gb785427
+      buildkite-aws-stack: v5.21.0-41-g49e62c1
 
   - label: Print Path
     command: .buildkite/scripts/print-path.sh
@@ -20,4 +20,4 @@ steps:
   - label: Print Path
     command: .buildkite/scripts/print-path.sh
     agents:
-      buildkite-aws-stack: v5.21.0-7-gb785427
+      buildkite-aws-stack: v5.21.0-41-g49e62c1
