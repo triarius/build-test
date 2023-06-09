@@ -16,8 +16,10 @@ steps:
     command: .buildkite/scripts/print-path.sh
     agents:
       buildkite-aws-stack: v5.21.0-7-gb785427
+    artifact_paths: artifacts/*
 
   - label: Print Path
     command: .buildkite/scripts/print-path.sh
     agents:
       buildkite-aws-stack: v5.21.0-41-g49e62c1
+    artifact_paths: artifacts/*
