@@ -1,11 +1,23 @@
+dag: true
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
-  - label: ":key: JWT"
-    command: .buildkite/scripts/jwt.sh
-  - label: "Print Job Token"
-    command: .buildkite/scripts/token.sh
-  - label: "Print Job Token Again"
-    command: .buildkite/scripts/token.sh
+    agents:
+      buildkite-aws-stack: v5.21.0-7-gb785427
+
+  - label: ":running: Versions"
+    command: .buildkite/scripts/run.sh
+    agents:
+      buildkite-aws-stack: v5.21.0-7-gb785427
+
+  - label: Print Path
+    command: .buildkite/scripts/print-path.sh
+    agents:
+      buildkite-aws-stack: v5.21.0-7-gb785427
+
+  - label: Print Path
+    command: .buildkite/scripts/print-path.sh
+    agents:
+      buildkite-aws-stack: v5.21.0-7-gb785427
