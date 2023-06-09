@@ -6,13 +6,15 @@ dag: true
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
-  - group: Test on each stack
+  - group: Versions
     steps:
       - label: ":running: Versions on {{matrix}}"
         command: .buildkite/scripts/run.sh
         agents:
           buildkite-aws-stack: "{{matrix}}"
         matrix: *matrix
+  - group: Print Path
+    steps:
       - label: Print Path on {{matrix}}
         command: .buildkite/scripts/print-path.sh
         artifact_paths: artifacts/*
