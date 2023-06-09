@@ -1,3 +1,7 @@
+x-anchors:
+  matrix: &matrix
+    - v5.21.0-7-gb785427
+    - v5.21.0-41-g49e62c1
 dag: true
 agents:
   queue: ${PIPELINE_QUEUE:-default}
@@ -6,11 +10,12 @@ steps:
     steps:
       - label: ":running: Versions on {{matrix}}"
         command: .buildkite/scripts/run.sh
+        agents:
+          buildkite-aws-stack: "{{matrix}}"
+        matrix: *matrix
       - label: Print Path on {{matrix}}
         command: .buildkite/scripts/print-path.sh
         artifact_paths: artifacts/*
-    matrix:
-      - v5.21.0-7-gb785427
-      - v5.21.0-41-g49e62c1
-    agents:
-      buildkite-aws-stack: "{{matrix}}"
+        agents:
+          buildkite-aws-stack: "{{matrix}}"
+        matrix: *matrix
