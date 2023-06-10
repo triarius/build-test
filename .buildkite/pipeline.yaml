@@ -1,7 +1,7 @@
 x-anchors:
   matrix: &matrix
     - v5.21.0-7-gb785427
-    - v5.21.0-41-g49e62c1
+    - v5.21.0-53-g5b54890
 dag: true
 agents:
   queue: ${PIPELINE_QUEUE:-default}
