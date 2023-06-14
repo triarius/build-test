@@ -3,6 +3,6 @@ agents:
   stack: nepa-test-windows
 steps:
   - label: ":running: Versions"
-    command: .buildkite/scripts/run.sh
+    command: .buildkite/scripts/run.ps1
   - label: ":docker::windows: Run Hello World Docker"
     command: docker run --rm mcr.microsoft.com/windows/nanoserver:ltsc2019-amd64 test cmd /c echo hello
