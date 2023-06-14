@@ -1,10 +1,8 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
-  stack: ${PIPELINE_STACK:-*}
+  stack: nepa-test-windows
 steps:
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
-  - label: ":key: JWT"
-    command: .buildkite/scripts/jwt.sh
-  - label: "Print Job Token"
-    command: .buildkite/scripts/token.sh
+  - label: ":docker::windows: Run Hello World Docker"
+    command: docker run mcr.microsoft.com/dotnet/samples:dotnetapp-nanoserver-2009
