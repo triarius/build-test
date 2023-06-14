@@ -5,4 +5,4 @@ steps:
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
   - label: ":docker::windows: Run Hello World Docker"
-    command: docker run --rm mcr.microsoft.com/mcr/hello-world:v1.0
+    command: docker run --rm mcr.microsoft.com/windows/nanoserver:2019 test cmd /c echo hello
