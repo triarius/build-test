@@ -1,8 +1,9 @@
-$ErrorActionPreference = 'Stop'
-$Debug = $false
+#!/usr/bin/pwsh
 
-Get-Command -Name bash
+Set-StrictMode -Version Latest
 
-Get-Command -Name buildkite-agent
+Get-Host | Select-Object Version
+buildkite-agent --version
+docker --version
 
 Write-Host "Hello From Nepa"
