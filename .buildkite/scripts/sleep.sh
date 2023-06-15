@@ -2,6 +2,6 @@
 
 set -euo pipefail
 
-trap "echo sleep terming..."
+trap "echo sleep terming..." SIGTERM
 
 sleep "$@"
