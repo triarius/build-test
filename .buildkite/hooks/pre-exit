@@ -5,3 +5,4 @@ set -Eeuo pipefail
 trap "echo terming" SIGTERM
 
 echo "in pre-exit..."
+env | grep BUILDKITE
