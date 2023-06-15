@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+trap "echo terming" SIGTERM
+
+echo "in pre-exit..."
