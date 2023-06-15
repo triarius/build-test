@@ -1,6 +1,6 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
-  stack: ${PIPELINE_STACK:-*}
+  stack: nepa-test-stack-name
 steps:
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
