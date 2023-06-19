@@ -2,27 +2,25 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
-  - group: "The best group ever"
+  - label: "{{matrix.greeting}}"
+    command: echo "{{matrix.greeting}} World"
     key: matrix
-    steps:
-      - label: "{{matrix.greeting}}"
-        command: echo "{{matrix.greeting}} World"
-        matrix:
-           setup:
-             greeting:
-               - "Hello"
-               - "G'day"
-               - "Bonjour"
-           adjustments:
-             - skip: "skipping this"
-               with:
-                 greeting: "Hello"
-             - skip: "skipping this"
-               with:
-                 greeting: "G'day"
-             - skip: "skipping this"
-               with:
-                 greeting: "Bonjour"
+    matrix:
+       setup:
+         greeting:
+           - "Hello"
+           - "G'day"
+           - "Bonjour"
+       adjustments:
+         - skip: "skipping this"
+           with:
+             greeting: "Hello"
+         - skip: "skipping this"
+           with:
+             greeting: "G'day"
+         - skip: "skipping this"
+           with:
+             greeting: "Bonjour"
 
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
