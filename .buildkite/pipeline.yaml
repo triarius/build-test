@@ -12,6 +12,9 @@ steps:
              - "Hello"
              - "G'day"
              - "Bonjour"
+           dim2:
+             - A
+             - B
          adjustments:
            - skip: "skipping this"
              with:
