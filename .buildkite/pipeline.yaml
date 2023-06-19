@@ -2,24 +2,26 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
-  - label: "{{matrix.greeting}}"
-    command: echo "{{matrix.greeting}} World"
-    matrix:
-       setup:
-         greeting:
-           - "Hello"
-           - "G'day"
-           - "Bonjour"
-       adjustments:
-         - skip: "skipping this"
-           with:
-             greeting: "Hello"
-         - skip: "skipping this"
-           with:
-             greeting: "G'day"
-         - skip: "skipping this"
-           with:
-             greeting: "Bonjour"
+  - group: Best group ever
+    steps:
+    - label: "{{matrix.greeting}}"
+      command: echo "{{matrix.greeting}} World"
+      matrix:
+         setup:
+           greeting:
+             - "Hello"
+             - "G'day"
+             - "Bonjour"
+         adjustments:
+           - skip: "skipping this"
+             with:
+               greeting: "Hello"
+           - skip: "skipping this"
+             with:
+               greeting: "G'day"
+           - skip: "skipping this"
+             with:
+               greeting: "Bonjour"
 
   - wait
 
