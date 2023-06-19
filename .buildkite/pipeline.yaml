@@ -4,7 +4,6 @@ agents:
 steps:
   - label: "{{matrix.greeting}}"
     command: echo "{{matrix.greeting}} World"
-    key: matrix
     matrix:
        setup:
          greeting:
@@ -22,12 +21,11 @@ steps:
            with:
              greeting: "Bonjour"
 
+  - wait
+
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
-    depends_on: matrix
   - label: ":key: JWT"
     command: .buildkite/scripts/jwt.sh
-    depends_on: matrix
   - label: "Print Job Token"
     command: .buildkite/scripts/token.sh
-    depends_on: matrix
