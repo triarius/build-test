@@ -14,3 +14,7 @@ steps:
       - limit: 2
         exit_status: "*"
     timeout_in_minutes: 5
+    plugins:
+    - triarius/test-hooks:
+        hooks:
+        - pre-exit
