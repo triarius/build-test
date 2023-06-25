@@ -1,7 +1,5 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
 steps:
-  - label: ":running: Versions"
-    command: .buildkite/scripts/run.sh
   - label: ":running: Sleep"
     command: .buildkite/scripts/sleep.sh 60

@@ -2,7 +2,7 @@
 
 set -Eeuo pipefail
 
-trap "echo terming" SIGTERM
+trap "echo pre-exit terming..." SIGTERM
 
 echo "in pre-exit..."
 env | grep BUILDKITE
