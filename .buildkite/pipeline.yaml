@@ -13,3 +13,4 @@ steps:
         exit_status: '5'
       - limit: 2
         exit_status: "*"
+    timeout_in_minutes: 5
