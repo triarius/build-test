@@ -11,6 +11,6 @@ steps:
   - label: ":hammer: Test App"
     command: npm run test
     plugins:
-      - docker-compose#v3.9.3:
+      - docker-compose#v4.14.0:
           run: test
           config: test-app/docker-compose.yaml
