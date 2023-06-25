@@ -1,5 +1,6 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
+  stack: ${PIPELINE_STACK:-*}
 steps:
   - label: ":running: Sleep"
     command: .buildkite/scripts/sleep.sh 60
