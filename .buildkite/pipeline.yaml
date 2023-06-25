@@ -8,3 +8,9 @@ steps:
     command: .buildkite/scripts/jwt.sh
   - label: "Print Job Token"
     command: .buildkite/scripts/token.sh
+  - label: ":hammer: Test App"
+    command: npm run test
+    plugins:
+      - docker-compose#v3.9.3:
+          run: test
+          config: test-app/docker-compose.yaml
