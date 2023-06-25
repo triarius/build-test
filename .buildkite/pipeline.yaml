@@ -9,7 +9,7 @@ steps:
   - label: "Print Job Token"
     command: .buildkite/scripts/token.sh
   - label: ":hammer: Test App"
-    command: ls -lA
+    command: ls -lnA
     plugins:
       - docker-compose#v4.14.0:
           run: test
