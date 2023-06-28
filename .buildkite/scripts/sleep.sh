@@ -7,4 +7,4 @@ trap "echo sleep terming..." SIGTERM
 mkdir -p tests
 touch tests/test.txt
 
-sleep "$@"
+sleep 60
