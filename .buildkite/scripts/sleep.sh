@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-trap "echo sleep terming..." SIGTERM
+trap "sleep infinity" SIGTERM
 
 mkdir -p tests
 touch tests/test.txt
