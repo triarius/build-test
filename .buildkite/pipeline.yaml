@@ -3,7 +3,7 @@ agents:
   stack: ${PIPELINE_STACK:-*}
 steps:
   - label: ":running: Sleep"
-    command: .buildkite/scripts/sleep.sh
+    command: sleep 60
     retry:
       automatic:
       - limit: 0
