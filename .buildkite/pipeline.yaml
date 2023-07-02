@@ -4,6 +4,6 @@ agents:
 steps:
   - label: ":running: Sleep"
     command:
-      - echo hello world
+      - false && \
       - .buildkite/scripts/sleep.sh 60
     artifact_paths: tests/**
