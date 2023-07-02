@@ -10,7 +10,7 @@ echo printing process tree of grandparent
 pstree -hp "$(ps -o ppid= -p $PPID | xargs)"
 
 echo search for bash processes
-pgrep bash
+pgrep bash || echo no bash processes found
 
 echo search for sleep processes
-pgrep sleep
+pgrep sleep || echo no sleep processes found
