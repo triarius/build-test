@@ -5,7 +5,6 @@ set -Eeuo pipefail
 trap "echo pre-exit terming..." SIGTERM
 
 echo "in pre-exit..."
-echo "$PATH"
 
 echo pid: $$
 ps -eo pid,ppid,pgid,args | grep $$
@@ -15,3 +14,6 @@ ps -eo pid,ppid,pgid,args | grep $PPID
 
 echo printing process tree of grandparent
 pstree -hp "$(ps -o ppid= -p $PPID | xargs)"
+
+echo search for bash processes
+pgrep bash
