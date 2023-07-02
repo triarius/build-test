@@ -13,4 +13,4 @@ ps -eo pid,ppid,pgid,args | grep $$
 echo parent pid: $PPID
 ps -eo pid,ppid,pgid,args | grep $PPID
 
-sleep 60
+sleep 120

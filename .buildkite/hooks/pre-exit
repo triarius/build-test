@@ -14,3 +14,6 @@ ps -eo pid,ppid,pgid,args | grep $PPID
 
 echo search for bash processes
 pgrep bash
+
+echo search for sleep processes
+pgrep sleep
