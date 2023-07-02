@@ -4,9 +4,6 @@ set -euo pipefail
 
 trap "echo sigterm received from sleep script" SIGTERM
 
-mkdir -p tests
-touch tests/test.txt
-
 echo pid: $$
 ps -eo pid,ppid,pgid,args | grep $$
 
