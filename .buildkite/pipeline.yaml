@@ -4,19 +4,4 @@ agents:
 steps:
   - label: ":running: Sleep"
     command: .buildkite/scripts/sleep.sh 60
-    retry:
-      automatic:
-      - limit: 0
-        exit_status: '3'
-      - limit: 0
-        exit_status: '4'
-      - limit: 0
-        exit_status: '5'
-      - limit: 2
-        exit_status: "*"
-    timeout_in_minutes: 5
     artifact_paths: tests/**
-    plugins:
-    - triarius/test-hooks:
-        hooks:
-        - pre-exit
