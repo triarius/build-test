@@ -4,10 +4,10 @@ set -euo pipefail
 
 trap "echo sigterm received from sleep script" SIGTERM
 
-echo pid: $$
+echo --- pid: $$
 ps -eo pid,ppid,pgid,args | grep $$
 
-echo parent pid: $PPID
+echo --- parent pid: $PPID
 ps -eo pid,ppid,pgid,args | grep $PPID
 
 sleep 120

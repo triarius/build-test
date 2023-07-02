@@ -6,11 +6,11 @@ trap "echo pre-exit terming..." SIGTERM
 
 echo "in pre-exit..."
 
-echo printing process tree of grandparent
+echo --- printing process tree of grandparent
 pstree -hp "$(ps -o ppid= -p $PPID | xargs)"
 
-echo search for bash processes
+echo --- search for bash processes
 pgrep bash || echo no bash processes found
 
-echo search for sleep processes
+echo --- search for sleep processes
 pgrep sleep || echo no sleep processes found
