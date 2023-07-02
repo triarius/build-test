@@ -13,7 +13,4 @@ ps -eo pid,ppid,pgid,args | grep $$
 echo parent pid: $PPID
 ps -eo pid,ppid,pgid,args | grep $PPID
 
-echo printing process tree of grandparent
-pstree -hp "$(ps -o ppid= -p $PPID | xargs)"
-
 sleep 60
