@@ -3,5 +3,7 @@ agents:
   stack: ${PIPELINE_STACK:-*}
 steps:
   - label: ":running: Sleep"
-    command: .buildkite/scripts/sleep.sh 60
+    command:
+      - echo hello world
+      - .buildkite/scripts/sleep.sh 60
     artifact_paths: tests/**
