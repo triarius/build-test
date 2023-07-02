@@ -6,4 +6,3 @@ steps:
     command:
       - echo hello world
       - .buildkite/scripts/sleep.sh 60
-    artifact_paths: tests/**
