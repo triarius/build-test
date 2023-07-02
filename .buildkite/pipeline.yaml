@@ -5,4 +5,4 @@ steps:
   - label: ":running: Sleep"
     command:
       - echo hello world
-      - .buildkite/scripts/sleep.sh 60
+      - .buildkite/scripts/sleep.sh
