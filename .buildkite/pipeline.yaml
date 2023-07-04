@@ -2,7 +2,8 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
-  - label: ":running: Sleep"
-    command:
-      - echo $$-
-      - .buildkite/scripts/sleep.sh
+  - label: ":running: Script"
+    command: |
+      echo $$-
+      echo $$$$
+      ps -eo pid,ppid,pgid,args | grep $$PPID
