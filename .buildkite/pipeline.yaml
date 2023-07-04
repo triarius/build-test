@@ -4,5 +4,5 @@ agents:
 steps:
   - label: ":running: Sleep"
     command:
-      - echo hello world
+      - echo $$-
       - .buildkite/scripts/sleep.sh
