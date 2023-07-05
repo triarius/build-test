@@ -2,7 +2,7 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
+  - label: ":running: Env"
+    command: cat $$BUILDKITE_ENV_FILE
   - label: ":running: Sleep"
-    command: |
-      echo $$-
-      .buildkite/scripts/sleep.sh 120
+    command: .buildkite/scripts/sleep.sh
