@@ -4,7 +4,3 @@ agents:
 steps:
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
-  - label: ":key: JWT"
-    command: .buildkite/scripts/jwt.sh
-  - label: "Print Job Token"
-    command: .buildkite/scripts/token.sh
