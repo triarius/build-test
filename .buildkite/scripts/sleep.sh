@@ -10,4 +10,8 @@ ps -eo pid,ppid,pgid,args | grep $$
 echo --- parent pid: $PPID
 ps -eo pid,ppid,pgid,args | grep $PPID
 
-sleep 120
+if [[ $# -eq 0 ]]; then
+  sleep 60
+else
+  sleep "$@"
+fi
