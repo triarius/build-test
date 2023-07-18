@@ -4,3 +4,22 @@ agents:
 steps:
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
+    plugins:
+    - kubernetes:
+          metadata:
+            labels:
+              aurora.tech/contact: test
+              aurora.tech/project: test
+          podSpec:
+            containers:
+              - image: alpine:latest
+                command: [echo]
+                args:
+                - "Hello, world!"
+                resources:
+                  limits:
+                    cpu: 100m
+                    memory: 256Mi
+                  requests:
+                    cpu: 100m
+                    memory: 256Mi
