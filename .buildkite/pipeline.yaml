@@ -4,3 +4,5 @@ agents:
 steps:
   - label: ":running: Versions"
     command: .buildkite/scripts/run.sh
+    plugins:
+      - triarius/git-branch-assertion
