@@ -16,7 +16,6 @@ ls -lA tmp/steps
 
 buildkite-agent artifact search .buildkite/steps/test-agent
 buildkite-agent artifact shasum .buildkite/steps/jwt
-buildkite-agent artifact download README.md /tmp/README.md
 
 buildkite-agent meta-data set hello <<<"Hello 👋 from the buildkite-agent bootstrap script"
 buildkite-agent meta-data get hello
