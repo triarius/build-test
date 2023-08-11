@@ -7,7 +7,7 @@ buildkite-agent --version
 
 buildkite-agent annotate "Hello 👋 from the buildkite-agent bootstrap script"
 buildkite-agent annotation remove
-buildkite-agent artifact upload .buildkite/scripts
+buildkite-agent artifact upload ".buildkite/scripts/*"
 
 mkdir -p tmp/scripts
 buildkite-agent artifact download .buildkite/scripts tmp/scripts
