@@ -2,7 +2,7 @@
 
 set -Eeuxo pipefail
 
-buildktie-agent --help
+buildkite-agent --help
 buildkite-agent --version
 
 buildkite-agent annotate "Hello 👋 from the buildkite-agent bootstrap script"
