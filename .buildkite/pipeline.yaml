@@ -4,15 +4,15 @@ agents:
 steps:
   - label: ":running: Versions"
     key: run
-    command: .buildkite/scripts/run
+    command: .buildkite/steps/run
   - label: ":key: JWT"
     key: jwt
-    command: .buildkite/scripts/jwt
+    command: .buildkite/steps/jwt
   - label: ":key: Print Job Token"
     key: token
-    command: .buildkite/scripts/token
+    command: .buildkite/steps/token
   - label: ":buildkite: test agent"
     depends_on:
       - token
     key: test-agent
-    command: .buildkite/scripts/test-agent
+    command: .buildkite/steps/test-agent
