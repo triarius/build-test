@@ -7,10 +7,10 @@ buildkite-agent --version
 
 buildkite-agent annotate "Hello 👋 from the buildkite-agent bootstrap script"
 buildkite-agent annotation remove
-buildkite-agent artifact upload README.md
-buildkite-agent artifact download README.md
-buildkite-agent artifact search README.md
-buildkite-agent artifact shasum README.md
+buildkite-agent artifact upload .buildkite/scripts
+buildkite-agent artifact download .buildkite/scripts tmp/scripts
+buildkite-agent artifact search .buildkite/scripts/test-agent
+buildkite-agent artifact shasum .buildkite/scripts/jwt
 buildkite-agent artifact download README.md /tmp/README.md
 
 buildkite-agent meta-data set hello <<<"Hello 👋 from the buildkite-agent bootstrap script"
