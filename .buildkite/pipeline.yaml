@@ -3,8 +3,14 @@ agents:
   stack: ${PIPELINE_STACK:-*}
 steps:
   - label: ":running: Versions"
+    key: run
     command: .buildkite/scripts/run
   - label: ":key: JWT"
+    key: jwt
     command: .buildkite/scripts/jwt
   - label: ":key: Print Job Token"
+    key: token
     command: .buildkite/scripts/token
+  - label: ":buildkite: test agent"
+    key: test-agent
+    command: .buildkite/scripts/test-agent
