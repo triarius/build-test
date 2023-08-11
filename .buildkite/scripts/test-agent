@@ -9,6 +9,7 @@ buildkite-agent annotate "Hello 👋 from the buildkite-agent bootstrap script"
 buildkite-agent annotation remove
 buildkite-agent artifact upload .buildkite/scripts
 buildkite-agent artifact download .buildkite/scripts tmp/scripts
+ls -lA tmp/scripts
 buildkite-agent artifact search .buildkite/scripts/test-agent
 buildkite-agent artifact shasum .buildkite/scripts/jwt
 buildkite-agent artifact download README.md /tmp/README.md
