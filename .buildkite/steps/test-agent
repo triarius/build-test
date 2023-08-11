@@ -11,7 +11,7 @@ buildkite-agent annotation remove --context remove-me
 buildkite-agent artifact upload ".buildkite/steps/*"
 
 mkdir -p tmp/steps
-buildkite-agent artifact download .buildkite/steps tmp/steps
+buildkite-agent artifact download '.buildkite/steps/*' tmp/steps
 ls -lA tmp/steps
 
 buildkite-agent artifact search .buildkite/steps/test-agent
