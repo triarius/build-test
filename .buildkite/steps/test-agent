@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -Euxo pipefail
+set -Eeuxo pipefail
 
 buildktie-agent --help
 buildkite-agent --version
