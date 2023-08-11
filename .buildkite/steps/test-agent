@@ -6,7 +6,8 @@ buildktie-agent --help
 buildkite-agent --version
 
 buildkite-agent annotate "Hello 👋 from the buildkite-agent bootstrap script"
-buildkite-agent annotation remove
+buildkite-agent annotate --context remove-me "⚠️ this annotation should have been be removed"
+buildkite-agent annotation remove --context remove-me
 buildkite-agent artifact upload ".buildkite/scripts/*"
 
 mkdir -p tmp/scripts
