@@ -12,7 +12,7 @@ buildkite-agent artifact upload ".buildkite/steps/*"
 
 mkdir -p tmp/steps
 buildkite-agent artifact download '.buildkite/steps/*' tmp/steps
-tree tmp/steps
+tree -a tmp/steps
 
 buildkite-agent artifact search .buildkite/steps/test-agent
 buildkite-agent artifact shasum .buildkite/steps/jwt
