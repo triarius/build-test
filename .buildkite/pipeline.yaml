@@ -11,6 +11,12 @@ steps:
   - label: ":key: Print Job Token"
     key: token
     command: .buildkite/steps/token
+  - label: Test artifacts
+    parallelism: 2
+    command:
+      - mkdir -p artifacts
+      - echo hello world! > artifacts/my_artifact.txt
+    artifact_paths: artifacts/*
   - label: ":buildkite: test agent"
     depends_on:
       - token
