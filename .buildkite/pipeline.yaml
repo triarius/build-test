@@ -12,11 +12,19 @@ steps:
     key: token
     command: .buildkite/steps/token
   - label: Test artifacts
+    key: upload-artifacts
     parallelism: 2
     command:
       - mkdir -p artifacts
       - echo hello world! > artifacts/my_artifact.txt
     artifact_paths: artifacts/*
+  - label: Download aritifacts
+    depends_on:
+      - upload-artifacts
+    command:
+      - mkdir -p artifacts
+      - buildkite-agent artifact download artifacts/* artifacts/
+      - cat artifacts/my_artifact.txt
   - label: ":buildkite: test agent"
     depends_on:
       - token
