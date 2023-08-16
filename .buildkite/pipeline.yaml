@@ -23,7 +23,7 @@ steps:
       - upload-artifacts
     command:
       - mkdir -p artifacts
-      - buildkite-agent artifact download artifacts/* artifacts/
+      - buildkite-agent artifact download artifacts/my_artifact.txt artifacts/
       - cat artifacts/my_artifact.txt
   - label: ":buildkite: test agent"
     depends_on:
