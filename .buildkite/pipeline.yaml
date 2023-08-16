@@ -2,15 +2,6 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
-  - label: ":running: Versions"
-    key: run
-    command: .buildkite/steps/run
-  - label: ":key: JWT"
-    key: jwt
-    command: .buildkite/steps/jwt
-  - label: ":key: Print Job Token"
-    key: token
-    command: .buildkite/steps/token
   - label: Test artifacts
     key: upload-artifacts
     parallelism: 2
@@ -25,8 +16,3 @@ steps:
       - mkdir -p artifacts
       - buildkite-agent artifact download artifacts/my_artifact.txt artifacts/
       - cat artifacts/my_artifact.txt
-  - label: ":buildkite: test agent"
-    depends_on:
-      - token
-    key: test-agent
-    command: .buildkite/steps/test-agent
