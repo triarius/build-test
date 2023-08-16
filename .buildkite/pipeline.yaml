@@ -15,4 +15,5 @@ steps:
     command:
       - mkdir -p artifacts
       - buildkite-agent artifact download artifacts/my_artifact.txt artifacts/
+      - ls -lA artifacts
       - cat artifacts/my_artifact.txt
