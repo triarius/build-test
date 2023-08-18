@@ -12,7 +12,6 @@ steps:
   - echo 'build complete'
 
 - label: empty hidden step 1
-  key: "build-complete"
   branches: "master"
   command:
   - sleep 20
@@ -20,7 +19,6 @@ steps:
 
 - wait: ~
   if: build.branch == "master"
-  depends_on: "build-complete"
 
 - label: empty step 3
   command:
