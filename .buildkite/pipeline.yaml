@@ -12,6 +12,7 @@ steps:
   - echo 'build complete'
 
 - label: empty hidden step 1
+  key: "build-complete"
   branches: "master"
   command:
   - sleep 20
