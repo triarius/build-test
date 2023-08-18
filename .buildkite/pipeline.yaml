@@ -1,18 +1,28 @@
-agents:
-  queue: ${PIPELINE_QUEUE:-default}
-  stack: ${PIPELINE_STACK:-*}
 steps:
-  - label: ":running: Versions"
-    key: run
-    command: .buildkite/steps/run
-  - label: ":key: JWT"
-    key: jwt
-    command: .buildkite/steps/jwt
-  - label: ":key: Print Job Token"
-    key: token
-    command: .buildkite/steps/token
-  - label: ":buildkite: test agent"
-    depends_on:
-      - token
-    key: test-agent
-    command: .buildkite/steps/test-agent
+- label: empty step 1
+  command:
+  - sleep 20
+  - echo 'build complete'
+
+- wait: ~
+
+- label: empty step 2
+  command:
+  - sleep 20
+  - echo 'build complete'
+
+- label: empty hidden step 1
+  key: "build-complete"
+  branches: "master"
+  command:
+  - sleep 20
+  - echo 'build complete'
+
+- wait: ~
+  if: build.branch == "master"
+  depends_on: "build-complete"
+
+- label: empty step 3
+  command:
+  - sleep 20
+  - echo 'build complete'
