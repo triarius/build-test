@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -Eexufo pipefail
+set -Eeufo pipefail
 
 failure() {
   local lineno=$1
@@ -10,7 +10,7 @@ failure() {
 
 trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
-docker buildx build --progress=plain -t jwt:latest .
+docker buildx build --progress=plain -t jwt:latest -f .buildkite/Dockerfile .
 
 function jwt {
   docker run --rm -i -e FORCE_COLOR=3 jwt:latest
