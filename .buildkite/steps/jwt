@@ -12,7 +12,7 @@ trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
 docker buildx build --progress=plain -t jwt:latest -f .buildkite/Dockerfile .
 
-function jwt {
+jwt() {
   docker run --rm -i -e FORCE_COLOR=3 jwt:latest
 }
 
