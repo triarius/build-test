@@ -13,18 +13,7 @@ steps:
         pre-checkout: |
           echo hello
         post-checkout: |
-          echo goodbye
+          echo $BUILDKITE_PLUGINS
     - triarius/test-hooks:
         some_key: some_value
         another_key: 6
-  - label: ":key: JWT"
-    key: jwt
-    command: .buildkite/steps/jwt
-  - label: ":key: Print Job Token"
-    key: token
-    command: .buildkite/steps/token
-  - label: ":buildkite: test agent"
-    depends_on:
-      - token
-    key: test-agent
-    command: .buildkite/steps/test-agent
