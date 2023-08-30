@@ -9,9 +9,11 @@ steps:
     - triarius/git-branch-assertion:
         some_key: some_value
         another_key: 4
-    - triarius/git-branch-assertion:
-        some_key: some_value
-        another_key: 5
+    - improbable-eng/metahook:
+        pre-checkout: |
+          echo hello
+        post-checkout: |
+          echo goodbye
     - triarius/test-hooks:
         some_key: some_value
         another_key: 6
