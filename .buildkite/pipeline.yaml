@@ -5,6 +5,16 @@ steps:
   - label: ":running: Versions"
     key: run
     command: .buildkite/steps/run
+    plugins:
+    - triarius/git-branch-assertion:
+        some_key: some_value
+        another_key: 4
+    - triarius/git-branch-assertion:
+        some_key: some_value
+        another_key: 5
+    - triarius/test-hooks:
+        some_key: some_value
+        another_key: 6
   - label: ":key: JWT"
     key: jwt
     command: .buildkite/steps/jwt
