@@ -10,6 +10,7 @@ steps:
     echo "Hello, world!" > tmp/artifacts/hello2.txt
     ls -la
     ls -la tmp/artifacts
+    chmod -R go-r tmp/artifacts
   plugins:
   - docker-compose#v4.14.0:
       run: alpine
