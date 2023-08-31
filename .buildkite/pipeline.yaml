@@ -8,8 +8,8 @@ steps:
     mkdir tmp/artifacts
     echo "Hello, world!" > tmp/artifacts/hello.txt
     echo "Hello, world!" > tmp/artifacts/hello2.txt
-    ls -lA
-    ls -lA tmp/artifacts
+    ls -la
+    ls -la tmp/artifacts
   plugins:
   - docker-compose#v4.14.0:
       run: alpine
