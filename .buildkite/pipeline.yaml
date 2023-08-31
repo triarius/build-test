@@ -8,10 +8,12 @@ steps:
     mkdir tmp/artifacts
     echo "Hello, world!" > tmp/artifacts/hello.txt
     echo "Hello, world!" > tmp/artifacts/hello2.txt
+    ls -lA
+    ls -lA tmp/artifacts
   plugins:
   - docker-compose#v4.14.0:
       run: alpine
-      ansi: false
+      ansi: true
       config: docker-compose.yaml
       mount-buildkite-agent: true
       propagate-environment: true
