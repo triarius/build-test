@@ -2,3 +2,6 @@ services:
   alpine:
     image: alpine:latest
     command: sleep 1
+    volumes:
+    - ./:/work
+    working_dir: /work
