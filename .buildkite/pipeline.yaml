@@ -15,4 +15,8 @@ steps:
       config: docker-compose.yaml
       mount-buildkite-agent: true
       propagate-environment: true
+  - improbable-eng/metahook:
+      post-command: |
+        ls -lA
+        ls -lA tmp/artifacts
   artifact_paths: tmp/artifacts/*
