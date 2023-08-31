@@ -4,7 +4,10 @@ agents:
 steps:
 - label: ":running: Versions"
   key: run
-  command: .buildkite/steps/run
+  command: |
+    mkdir tmp/artifacts
+    echo "Hello, world!" > tmp/artifacts/hello.txt
+    echo "Hello, world!" > tmp/artifacts/hello2.txt
   plugins:
   - docker-compose#v4.14.0:
       run: alpine
