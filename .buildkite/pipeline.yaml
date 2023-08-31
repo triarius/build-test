@@ -2,18 +2,13 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
-  - label: ":running: Versions"
-    key: run
-    command: .buildkite/steps/run
-    plugins:
-    - triarius/git-branch-assertion:
-        some_key: some_value
-        another_key: 4
-    - improbable-eng/metahook:
-        pre-checkout: |
-          echo hello
-        post-checkout: |
-          echo $BUILDKITE_PLUGINS
-    - triarius/test-hooks:
-        some_key: some_value
-        another_key: 6
+- label: ":running: Versions"
+  key: run
+  command: .buildkite/steps/run
+  plugins:
+  - docker-compose#v4.14.0:
+      run: alpine
+      ansi: false
+      config: docker-compose.yaml
+      mount-buildkite-agent: true
+      propagate-environment: true
