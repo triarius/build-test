@@ -1,5 +1,4 @@
 services:
   alpine:
     image: alpine:latest
-    container_name: alpine
-    command: echo "Hello, world!" > /tmp/artifacts/hello.txt
+    command: mkdir tmp/artifacts && echo "Hello, world!" > tmp/artifacts/hello.txt
