@@ -5,7 +5,7 @@ steps:
 - label: ":running: Versions"
   key: run
   command: |
-    mkdir tmp/artifacts
+    mkdir -p tmp/artifacts
     echo "Hello, world!" > tmp/artifacts/hello.txt
     echo "Hello, world!" > tmp/artifacts/hello2.txt
     ls -la
