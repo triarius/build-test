@@ -1,3 +1,4 @@
 services:
   alpine:
     image: alpine:latest
+    command: sleep 1
