@@ -10,5 +10,5 @@ steps:
     command: .buildkite/steps/run
     plugins:
       docker-compose#v4.14.0:
-        run: alpine
+        run: agent
         mount-buildkite-agent: true
