@@ -1,7 +1,8 @@
 services:
   agent:
     image: alpine:latest
-    command: [echo "Hello world"]
+    command:
+      - .buildkite/steps/run
     volumes:
       - ./:/app
     working_dir: /app

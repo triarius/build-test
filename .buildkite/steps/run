@@ -2,7 +2,7 @@
 
 set -eu
 
-sh --version
+sh --help
 buildkite-agent --version
 
 echo "Hello From Nepa"
