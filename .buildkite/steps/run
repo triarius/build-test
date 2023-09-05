@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ash
 
 set -euo pipefail
 
-bash --version
+sh --version
 buildkite-agent --version
 
 echo "Hello From Nepa"
