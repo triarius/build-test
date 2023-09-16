@@ -1,3 +1,5 @@
+env:
+  FOO: 1
 agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
@@ -16,3 +18,7 @@ steps:
       - token
     key: test-agent
     command: .buildkite/steps/test-agent
+  - label: ":buildkite: test agent with env"
+    env:
+      FOO: 2
+    command: echo "FOO=${FOO}"
