@@ -21,4 +21,4 @@ steps:
   - label: ":buildkite: test agent with env"
     env:
       FOO: 2
-    command: echo "FOO=${FOO}"
+    command: echo "FOO=$${FOO}"
