@@ -4,21 +4,6 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
-  - label: ":running: Versions"
-    key: run
-    command: .buildkite/steps/run
-  - label: ":key: JWT"
-    key: jwt
-    command: .buildkite/steps/jwt
-  - label: ":key: Print Job Token"
-    key: token
-    command: .buildkite/steps/token
-  - label: ":buildkite: test agent"
-    depends_on:
-      - token
-    key: test-agent
-    command: .buildkite/steps/test-agent
-  - label: ":buildkite: test agent with env"
-    env:
-      FOO: 2
-    command: echo "FOO=$${FOO}"
+- label: ":key: JWT"
+  key: jwt
+  command: .buildkite/steps/jwt
