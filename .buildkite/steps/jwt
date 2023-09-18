@@ -18,4 +18,4 @@ jwt() {
 
 echo --- :key: OIDC Tokens
 
-buildkite-agent oidc request-token --audience sts.amazonaws.com --claim 'env.BUILDKITE_PULL_REQUEST' | jwt
+buildkite-agent oidc request-token --claim 'env.BUILDKITE_PULL_REQUEST' | jwt
