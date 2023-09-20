@@ -5,11 +5,11 @@ set -euo pipefail
 echo ~~~ Creating file as root
 docker run --userns=host -v /:/chroot -w /chroot alpine:latest touch file-created-as-root
 
-echo ~~~ Checking file permissions
+echo +++ Checking file permissions
 ls -lA /file-created-as-root
 
 echo ~~~ Cleaning up
 docker run --userns=host -v /:/chroot -w /chroot alpine:latest rm file-created-as-root
 
-echo ~~~ Checking file existence
+echo +++ Checking file existence
 ls -lA /
