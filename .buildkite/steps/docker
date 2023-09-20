@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+docker run --userns=host -v /:/chroot -w /chroot alpine:latest touch file-created-as-root
+ls -lA /file-created-as-root

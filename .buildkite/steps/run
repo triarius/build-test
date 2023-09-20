@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
-
-docker run --userns=host -v /:/chroot -w /chroot alpine:latest ls -la
