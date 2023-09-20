@@ -12,4 +12,4 @@ echo ~~~ Cleaning up
 docker run --userns=host -v /:/chroot -w /chroot alpine:latest rm file-created-as-root
 
 echo ~~~ Checking file existence
-ls -lA /file-created-as-root
+ls -lA /
