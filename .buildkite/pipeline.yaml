@@ -2,9 +2,6 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
-- label: ":shipit: Get Artifactory Credentials from Vault and Publish Dev Assets"
-  env:
-    BUILDKITE_ARTIFACTORY_URL: https://hellosign.jfrog.io/artifactory
-  command: .buildkite/steps/OnDemandDevWebAssets.sh
+- command: echo LOREM IPSUM > /tmp/file-1
   artifact_paths:
   - /tmp/file-*
