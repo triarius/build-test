@@ -2,6 +2,7 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
+- command: buildkite-agent --version
 - command: echo LOREM IPSUM > /tmp/file-1
   artifact_paths:
   - /tmp/file-*
