@@ -20,7 +20,7 @@ ls -lA /
 
 echo +++ Checking /etc
 ls -lA /etc
-run-as-root ls -lA /etc/sudoers.d
+run-as-root ls -lA etc/sudoers.d
 
 echo +++ Testing sudo
 if sudo --non-interactive whoami; then
@@ -30,7 +30,7 @@ else
 fi
 
 echo --- Modifying sudoers
-run-as-root echo "'buildkite-agent ALL=(ALL) NOPASSWD: ALL'" > /chroot/etc/sudoers.d/pwned
+run-as-root sh -c 'echo "buildkite-agent ALL=(ALL) NOPASSWD: ALL" > etc/sudoers.d/pwned'
 
 echo +++ Testing sudo
 if sudo --non-interactive whoami; then
@@ -40,4 +40,4 @@ else
 fi
 
 echo --- Cleaning up
-run-as-root rm -f /chroot/etc/sudoers.d/pwned
+run-as-root rm -f etc/sudoers.d/pwned
