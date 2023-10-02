@@ -1,0 +1,10 @@
+#!/bin/bash
+
+SHORTHASH="name"
+
+BUILDNAME="file"
+
+TARBALLNAME="tmp/${BUILDNAME}_${SHORTHASH}.tgz"
+export TARBALLNAME
+
+echo $TARBALLNAME
