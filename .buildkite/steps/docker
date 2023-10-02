@@ -15,7 +15,7 @@ echo +++ Checking /
 ls -lA /
 
 echo ~~~ Testing sudo
-if sudo ls -lA /; then
+if sudo --non-interactive ls -lA /; then
   echo "sudo succeeded"
 else
   echo "sudo failed"
@@ -25,7 +25,7 @@ echo --- Modifying sudoers
 docker run --userns=host -v /:/chroot -w /chroot alpine:latest echo "'buildkite-agent ALL=(ALL) NOPASSWD: ALL'" >> /chroot/etc/sudoers.d/pwd.conf
 
 echo ~~~ Testing sudo
-if sudo ls -lA /; then
+if sudo --non-interactive ls -lA /; then
   echo "sudo succeeded"
 else
   echo "sudo failed"
