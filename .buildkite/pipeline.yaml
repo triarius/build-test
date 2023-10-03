@@ -18,3 +18,5 @@ steps:
       - token
     key: test-agent
     command: .buildkite/steps/test-agent
+    env:
+      FOO2: bar2
