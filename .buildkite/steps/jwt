@@ -18,8 +18,4 @@ jwt() {
 
 echo --- :key: OIDC Tokens
 
-buildkite-agent oidc request-token | jwt
-buildkite-agent oidc request-token --audience sts.amazonaws.com | jwt
-buildkite-agent oidc request-token --audience sts.amazonaws.com --lifetime 0 | jwt
-buildkite-agent oidc request-token --audience sts.amazonaws.com --lifetime 600 | jwt
-buildkite-agent oidc request-token --claim env.FOO | jwt
+buildkite-agent oidc request-token --claim agent_started_at --claim env.FOO | jwt
