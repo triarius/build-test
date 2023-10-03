@@ -1,6 +1,8 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
+env:
+  FOO: bar
 steps:
   - label: ":running: Versions"
     key: run
