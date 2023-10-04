@@ -14,3 +14,6 @@ steps:
       FOO12: bar2
       FOO2: bar2
     command: .buildkite/steps/jwt
+  - label: moar upload
+    key: upload
+    command: .buildkite/steps/upload
