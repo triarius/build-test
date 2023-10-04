@@ -2,7 +2,8 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 env:
-  FOO: bar
+  FOO1: bar
+  FOO12: bar
 steps:
   - label: ":running: Versions"
     key: run
@@ -10,6 +11,6 @@ steps:
   - label: ":key: JWT"
     key: jwt
     env:
+      FOO12: bar2
       FOO2: bar2
-      FOO: bar2
     command: .buildkite/steps/jwt
