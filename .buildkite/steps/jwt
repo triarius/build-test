@@ -19,3 +19,4 @@ jwt() {
 echo --- :key: OIDC Tokens
 
 buildkite-agent oidc request-token --claim agent_created_at --claim env.FOO --claim env.FOO2 | jwt
+buildkite-agent oidc request-token --claim env.FOO3 | jwt
