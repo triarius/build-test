@@ -4,7 +4,8 @@ set -Eeufo pipefail
 
 buildkite-agent pipeline upload <<YAML
 env:
-  FOO: fake-bar
+  FOO1: fake-bar
+  FOO12: fake-bar
 steps:
 - label: new step
   command: echo hello world
