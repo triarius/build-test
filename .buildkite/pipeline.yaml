@@ -2,6 +2,8 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
+- key: all-env
+  command: env
 - key: check-env
   command: echo $$BUILDKITE_TERMINATE_INSTANCE_AFTER_JOB
 - key: check-interpolated
