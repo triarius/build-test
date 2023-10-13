@@ -10,3 +10,4 @@ steps:
   label: one
   command: buildkite-agent step get outcome --step setup --build $$BUILDKITE_BUILD_ID
   depends_on: setup
+  allow_dependency_failure: true
