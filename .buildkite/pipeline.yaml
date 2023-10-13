@@ -5,7 +5,7 @@ steps:
 - key: setup
   label: setup
   command: |
-    exit "$$BUILDKITE_PARALLEL_JOB"
+    exit 0
   parallelism: 3
 - key: one
   label: one
