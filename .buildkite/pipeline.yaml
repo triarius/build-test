@@ -4,7 +4,7 @@ agents:
 steps:
 - key: setup
   label: setup
-  command: exit 0
+  command: exit %n
   parallelism: 3
 - key: one
   label: one
