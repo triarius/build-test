@@ -12,7 +12,9 @@ steps:
     key: token
     command: .buildkite/steps/token
   - label: ":up: test upload"
-    command: buildkite-agent artifact upload missing-file "missing-glob/*"
+    command:
+      - echo "hello" > hello.txt
+        buildkite-agent artifact upload missing-file "missing-glob/*"
   - label: ":buildkite: test agent"
     depends_on:
       - token
