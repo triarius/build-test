@@ -1,27 +1,12 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
-  stack: ${PIPELINE_STACK:-*}
+  stack: nepa-tajw
 steps:
-  - label: sleep
-    command: sleep 300
-    key: sleep
   - label: ":running: Versions"
     key: run
-    depends_on:
-      - sleep
     command: .buildkite/steps/run
-  - label: ":key: JWT"
-    key: jwt
-    command: .buildkite/steps/jwt
-    depends_on:
-      - run
-  - label: ":key: Print Job Token"
-    key: token
-    command: .buildkite/steps/token
-    depends_on:
-      - jwt
   - label: ":buildkite: test agent"
     depends_on:
-      - token
+      - run
     key: test-agent
     command: .buildkite/steps/test-agent

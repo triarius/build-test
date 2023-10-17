@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
+#!/usr/bin/env pwsh
 
-set -euo pipefail
-
-bash --version
-
-echo Hello From Nepa
+Write-Output "Hello from powershell!"
