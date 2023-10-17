@@ -8,9 +8,13 @@ steps:
   - label: ":key: JWT"
     key: jwt
     command: .buildkite/steps/jwt
+    depends_on:
+      - run
   - label: ":key: Print Job Token"
     key: token
     command: .buildkite/steps/token
+    depends_on:
+      - jwt
   - label: ":buildkite: test agent"
     depends_on:
       - token
