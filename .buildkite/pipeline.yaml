@@ -4,8 +4,11 @@ agents:
 steps:
   - label: sleep
     command: sleep 300
+    key: sleep
   - label: ":running: Versions"
     key: run
+    depends_on:
+      - sleep
     command: .buildkite/steps/run
   - label: ":key: JWT"
     key: jwt
