@@ -1,6 +1,6 @@
 agents:
   queue: ${PIPELINE_QUEUE:-default}
-  stack: nepa-tajw
+  stack: nepa-test-tajw
 steps:
   - label: ":running: Versions"
     key: run
