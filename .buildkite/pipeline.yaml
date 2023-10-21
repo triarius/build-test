@@ -2,14 +2,11 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
-  - label: sleep
-    command: sleep 300
-    key: sleep
   - label: ":running: Versions"
     key: run
-    depends_on:
-      - sleep
     command: .buildkite/steps/run
+    depends_on:
+      - upload
   - label: ":key: JWT"
     key: jwt
     command: .buildkite/steps/jwt
