@@ -1,7 +1,10 @@
 agents:
-  queue: ${PIPELINE_QUEUE:-default}
+  queue: ${PIPELINE_QUEUE:-kubernetes}
   stack: ${PIPELINE_STACK:-*}
 steps:
+  - label: 🤫
+    command: |-
+      buildkite-agent secret get test-secret
   - label: ":running: Versions"
     key: run
     command: .buildkite/steps/run
