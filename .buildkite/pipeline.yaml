@@ -1,3 +1,8 @@
+x-anchors:
+  common: &common
+    plugins:
+      - triarius/git-branch-assertion: ~
+
 agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
@@ -5,14 +10,18 @@ steps:
   - label: ":running: Versions"
     key: run
     command: .buildkite/steps/run
+    <<: *common
   - label: ":key: JWT"
     key: jwt
     command: .buildkite/steps/jwt
+    <<: *common
   - label: ":key: Print Job Token"
     key: token
     command: .buildkite/steps/token
+    <<: *common
   - label: ":buildkite: test agent"
     depends_on:
       - token
     key: test-agent
     command: .buildkite/steps/test-agent
+    <<: *common
