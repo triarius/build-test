@@ -11,4 +11,4 @@ steps:
     key: run
     command: .buildkite/steps/run
     plugins:
-      - triarius/git-branch-assertion
+      - triarius/git-branch-assertion: null
