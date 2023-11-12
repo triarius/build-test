@@ -10,5 +10,4 @@ steps:
   - label: ":running: Versions"
     key: run
     command: .buildkite/steps/run
-    plugins:
-      - triarius/git-branch-assertion: null
+    <<: *common
