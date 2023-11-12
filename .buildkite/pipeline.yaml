@@ -1,13 +1,15 @@
-x-anchors:
-  common: &common
-    plugins:
-      - triarius/git-branch-assertion: ~
-
 agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
-  - label: ":running: Versions"
-    key: run
-    command: .buildkite/steps/run
-    <<: *common
+- command: echo hello world
+  plugins:
+  - detect-clowns:v2.0.0: ~
+- command: echo hello world
+  plugins:
+  - detect-clowns:v2.0.0
+- command: echo hello world
+  plugins:
+    detect-clowns:v2.0.0: ~
+- command: echo hello world
+  plugins: detect-clowns:v2.0.0
