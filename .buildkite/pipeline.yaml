@@ -4,13 +4,13 @@ agents:
 steps:
 - command: echo hello world
   plugins:
-  - detect-clowns:v2.0.0: ~
+  - detect-clowns#v2.0.0: ~
 - command: echo hello world
   plugins:
-  - detect-clowns:v2.0.0
+  - detect-clowns#v2.0.0
 - command: echo hello world
   plugins:
-    detect-clowns:v2.0.0: ~
+    detect-clowns#v2.0.0: ~
 - command: echo hello world
   plugins:
-    - detect-clowns:v2.0.0
+    - detect-clowns#v2.0.0
