@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -Eeufo pipefail
+
+echo "Running repo environment hook"
+sleep 10
