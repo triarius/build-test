@@ -2,4 +2,4 @@
 
 set -Eeufo pipefail
 
-export FOO=new_value
+[[ $FOO == new_value ]]
