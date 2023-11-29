@@ -3,3 +3,5 @@
 set -Eeufo pipefail
 
 [[ $FOO == new_value ]]
+
+exit 0
