@@ -3,6 +3,7 @@
 set -Eeufo pipefail
 
 echo "In pre-command hook"
+sleep 10
 
 [[ $FOO == new_value ]]
 
