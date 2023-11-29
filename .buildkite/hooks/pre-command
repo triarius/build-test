@@ -2,6 +2,8 @@
 
 set -Eeufo pipefail
 
+echo "In pre-command hook"
+
 [[ $FOO == new_value ]]
 
 exit 0
