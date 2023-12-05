@@ -2,7 +2,7 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
-  - label: matrix
+  - label: matrix-{{matrix}}
     command: echo {{matrix}}
     matrix:
       - amd64
