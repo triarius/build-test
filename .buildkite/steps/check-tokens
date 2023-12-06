@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -Eeufo pipefail
+
+declare -A seen
+for i in {1..2}; do
+  token_hash=$(buildkite-agent meta-data get "agent-access-token-hash-${i}")
+  seen_index=${seen[$token_hash]:-}
+  if [[ -n "$seen_index" ]]; then
+    echo "ERROR: agent-access-token-hash-${i} is a duplicate of agent-access-token-hash-${seen_index}"
+    exit 1
+  fi
+  seen[$token_hash]=$i
+done
