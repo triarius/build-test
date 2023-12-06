@@ -3,7 +3,7 @@
 set -Eeufo pipefail
 
 declare -A seen
-for i in {1..2}; do
+for i in {0..1}; do
   token_hash=$(buildkite-agent meta-data get "agent-access-token-hash-${i}")
   seen_index=${seen[$token_hash]:-}
   if [[ -n "$seen_index" ]]; then
