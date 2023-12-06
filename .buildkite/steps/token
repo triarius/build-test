@@ -2,7 +2,7 @@
 
 set -Eeufo pipefail
 
-printf "My agent job token is: %s\033[31m%s\033[0m\n" "${BUILDKITE_AGENT_ACCESS_TOKEN:0:5}" "${BUILDKITE_AGENT_ACCESS_TOKEN:5}"
+printf "+++ My agent job token is: %s\033[31m%s\033[0m\n" "${BUILDKITE_AGENT_ACCESS_TOKEN:0:5}" "${BUILDKITE_AGENT_ACCESS_TOKEN:5}"
 echo "Note: There's some colour in there to fool the redactor"
 echo
 
