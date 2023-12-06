@@ -2,6 +2,5 @@
 
 set -Eeufo pipefail
 
-echo -n "$BUILDKITE_AGENT_ACCESS_TOKEN" \
-| sha256sum \
-| tee >(buildkite-agent meta-data set "agent-access-token-hash-${BUILDKITE_PARALLEL_JOB}")
+echo -n "$BUILDKITE_AGENT_ACCESS_TOKEN" | sha256sum > token_hash
+buildkite-agent meta-data set "agent-access-token-hash-${BUILDKITE_PARALLEL_JOB}" < token_hash
