@@ -12,6 +12,7 @@ readarray -t agent_pids < <(pgrep buildkite-agent)
 # read /proc/$pid/environ to get the token
 for agent_pid in "${agent_pids[@]}"; do
   echo "Agent PID: $agent_pid"
+  echo "Agent token pre-hash: $(strings "/proc/$agent_pid/environ" | grep BUILDKITE_AGENT_ACCESS_TOKEN | sed 's/^BUILDKITE_AGENT_ACCESS_TOKEN=//' || true)"
   echo "Agent token hash: $(strings "/proc/$agent_pid/environ" | grep BUILDKITE_AGENT_ACCESS_TOKEN | sed 's/BUILDKITE_AGENT_ACCESS_TOKEN=//g' | sha256sum | cut -d ' ' -f 1 || true)"
 done
 sleep 10
