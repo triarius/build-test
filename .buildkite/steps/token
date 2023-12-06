@@ -2,15 +2,15 @@
 
 set -Eeufo pipefail
 
-echo Printing token substrings to work around the redactor:
-echo "${BUILDKITE_AGENT_ACCESS_TOKEN:0:4}"
-echo "${BUILDKITE_AGENT_ACCESS_TOKEN:4}"
+printf "My agent job token is: %s\033[31m%s\033[0m\n" "${BUILDKITE_AGENT_ACCESS_TOKEN:0:4}" "${BUILDKITE_AGENT_ACCESS_TOKEN:4}"
 
 sleep 1
+printf "Other agents on this machine:"
 readarray -t agent_pids < <(pgrep buildkite-agent)
 # read /proc/$pid/environ to get the token
 for agent_pid in "${agent_pids[@]}"; do
   echo "Agent PID: $agent_pid"
   echo "Agent token: $(strings "/proc/$agent_pid/environ" | grep BUILDKITE_AGENT_ACCESS_TOKEN | sed 's/^BUILDKITE_AGENT_ACCESS_TOKEN=//' || true)"
+  echo
 done
 sleep 10
