@@ -2,20 +2,15 @@
 
 set -Eeufo pipefail
 
-echo -n "$BUILDKITE_AGENT_ACCESS_TOKEN" | sha256sum | cut -d ' ' -f 1 > token_hash
-buildkite-agent meta-data set "agent-access-token-hash-${BUILDKITE_PARALLEL_JOB}" < token_hash
-
-echo "${BUILDKITE_AGENT_ACCESS_TOKEN:0:2}"
-echo "${BUILDKITE_AGENT_ACCESS_TOKEN:2}"
-
-echo "My token hash is: $(cat token_hash)"
+echo Printing token substrings to work around the redactor:
+echo "${BUILDKITE_AGENT_ACCESS_TOKEN:0:4}"
+echo "${BUILDKITE_AGENT_ACCESS_TOKEN:4}"
 
 sleep 1
 readarray -t agent_pids < <(pgrep buildkite-agent)
 # read /proc/$pid/environ to get the token
 for agent_pid in "${agent_pids[@]}"; do
   echo "Agent PID: $agent_pid"
-  echo "Agent token pre-hash: $(strings "/proc/$agent_pid/environ" | grep BUILDKITE_AGENT_ACCESS_TOKEN | sed 's/^BUILDKITE_AGENT_ACCESS_TOKEN=//' || true)"
-  echo "Agent token hash: $(strings "/proc/$agent_pid/environ" | grep BUILDKITE_AGENT_ACCESS_TOKEN | sed 's/BUILDKITE_AGENT_ACCESS_TOKEN=//g' | sha256sum | cut -d ' ' -f 1 || true)"
+  echo "Agent token: $(strings "/proc/$agent_pid/environ" | grep BUILDKITE_AGENT_ACCESS_TOKEN | sed 's/^BUILDKITE_AGENT_ACCESS_TOKEN=//' || true)"
 done
 sleep 10

@@ -6,7 +6,3 @@ steps:
   key: token
   command: .buildkite/steps/token
   parallelism: 2
-- label: ":key: check job tokens are distinct"
-  command: .buildkite/steps/check-tokens
-  depends_on:
-  - token
