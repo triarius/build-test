@@ -2,17 +2,14 @@ agents:
   queue: ${PIPELINE_QUEUE:-default}
   stack: ${PIPELINE_STACK:-*}
 steps:
-  - label: ":running: Versions"
-    key: run
-    command: .buildkite/steps/run
-  - label: ":key: JWT"
-    key: jwt
-    command: .buildkite/steps/jwt
-  - label: ":key: Print Job Token"
-    key: token
-    command: .buildkite/steps/token
-  - label: ":buildkite: test agent"
-    depends_on:
-      - token
-    key: test-agent
-    command: .buildkite/steps/test-agent
+- label: Encrypt with KMS key
+  key: kms-encrypt
+  plugins:
+  - aws-assume-role-with-web-identity:
+      role-arn: arn:aws:iam::172840064832:role/nepa-test-kms-access
+  command: |-
+    set -Eeufo pipefail
+
+    aws kms encrypt --key-id alias/nepa-test-kms-access --plaintext "hello world" --output text --query CiphertextBlob | base64 > encrypted.txt
+  artifact_paths:
+  - encrypted.txt
