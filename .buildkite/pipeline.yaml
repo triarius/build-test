@@ -11,11 +11,11 @@ steps:
     set -Eeufo pipefail
 
     echo "+++ :lock: Encrypting a message"
-    echo -n "Hello world!" \
-    | base64 \
+    echo -n "$(date): This is a message encrypted with a kms key in the buildite-sandbox account" \
+    | base64 -w 0 \
     | xargs -n1 aws kms encrypt --key-id arn:aws:kms:us-east-1:253213882263:key/e43ab8b1-e21c-48e4-953b-de0c66095148 --plaintext \
     | jq -r '.CiphertextBlob' \
-    | base64 -d \
+    | base64 -dw 0 \
     > encrypted.blob
   artifact_paths:
   - encrypted.blob
@@ -34,5 +34,5 @@ steps:
 
     echo "+++ :unlock: The encrypted message was:"
     aws kms decrypt --ciphertext-blob fileb://encrypted.blob --output text --query Plaintext \
-    | base64 --decode
+    | base64 -d
     echo
