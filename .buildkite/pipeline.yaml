@@ -31,5 +31,7 @@ steps:
 
     buildkite-agent artifact download encrypted.blob .
 
+    echo -n "-- The encrypted message was:"
     aws kms decrypt --ciphertext-blob fileb://encrypted.blob --output text --query Plaintext \
     | base64 --decode
+    echo
