@@ -10,6 +10,6 @@ steps:
   command: |-
     set -Eeufo pipefail
 
-    aws kms encrypt --key-id alias/nepa-test-kms-access --plaintext "hello world" --output text --query CiphertextBlob | base64 > encrypted.txt
+    aws kms encrypt --key-id arn:aws:kms:ap-southeast-2:253213882263:key/05ffe582-aec6-401c-bfa0-6db80238ab8f --plaintext "hello world" --output text --query CiphertextBlob | base64 > encrypted.txt
   artifact_paths:
   - encrypted.txt
