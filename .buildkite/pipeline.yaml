@@ -19,6 +19,8 @@ steps:
 
 - label: Decrypt with KMS key
   key: kms-decrypt
+  depends_on:
+  - kms-encrypt
   plugins:
   - aws-assume-role-with-web-identity:
       role-arn: arn:aws:iam::172840064832:role/nepa-test-kms-access
