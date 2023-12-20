@@ -12,7 +12,7 @@ steps:
 
     echo -n "hello world!" \
     | base64 \
-    | xargs -n1 aws kms encrypt --key-id arn:aws:kms:ap-southeast-2:253213882263:key/05ffe582-aec6-401c-bfa0-6db80238ab8f --plaintext \
+    | xargs -n1 aws kms encrypt --key-id arn:aws:kms:us-east-1:253213882263:key/e43ab8b1-e21c-48e4-953b-de0c66095148 --plaintext \
     | jq -r '.CiphertextBlob' > encrypted.txt
   artifact_paths:
   - encrypted.txt
