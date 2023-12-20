@@ -13,9 +13,11 @@ steps:
     echo -n "hello world!" \
     | base64 \
     | xargs -n1 aws kms encrypt --key-id arn:aws:kms:us-east-1:253213882263:key/e43ab8b1-e21c-48e4-953b-de0c66095148 --plaintext \
-    | jq -r '.CiphertextBlob' > encrypted.txt
+    | jq -r '.CiphertextBlob' \
+    | base64 -d \
+    > encrypted.blob
   artifact_paths:
-  - encrypted.txt
+  - encrypted.blob
 
 - label: Decrypt with KMS key
   key: kms-decrypt
@@ -27,5 +29,7 @@ steps:
   command: |-
     set -Eeufo pipefail
 
-    buildkite-agent artifact download encrypted.txt .
-    aws kms decrypt --ciphertext-blob fileb://encrypted.txt --output text --query Plaintext | base64 --decode
+    buildkite-agent artifact download encrypted.blob .
+
+    aws kms decrypt --ciphertext-blob fileb://encrypted.blob --output text --query Plaintext \
+    | base64 --decode
