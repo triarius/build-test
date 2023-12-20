@@ -16,3 +16,14 @@ steps:
     | jq -r '.CiphertextBlob' > encrypted.txt
   artifact_paths:
   - encrypted.txt
+
+- label: Decrypt with KMS key
+  key: kms-decrypt
+  plugins:
+  - aws-assume-role-with-web-identity:
+      role-arn: arn:aws:iam::172840064832:role/nepa-test-kms-access
+  command: |-
+    set -Eeufo pipefail
+
+    buildkite-agent artifact download encrypted.txt .
+    aws kms decrypt --ciphertext-blob fileb://encrypted.txt --output text --query Plaintext | base64 --decode
