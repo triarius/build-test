@@ -3,4 +3,4 @@ agents:
   stack: ${PIPELINE_STACK:-*}
 steps:
   - command: echo "hello" $Foot $FOO
-  - command: env | grep ^F
+  - command: echo $$env:Foot $$echo:FOO
