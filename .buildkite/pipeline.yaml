@@ -3,4 +3,5 @@ agents:
   stack: ${PIPELINE_STACK:-*}
 steps:
   - command: echo "hello" $Foot $FOO
-  - command: echo $$env:Foot $$echo:FOO
+  - command: echo $$env:Foot $$env:FOO
+  - command: bash -c 'echo $$Foot $$FOO $$FOOT'
