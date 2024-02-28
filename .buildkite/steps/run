@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -Eeuo pipefail
 
-bash --version
+print_secrets() {
+  echo This a secret: Hello World!
+}
 
-echo Hello From Nepa
+print_secrets
+
+buildkite-agent secret redact --debug <<SECRETS
+Hello World!
+SECRETS
+
+print_secrets
