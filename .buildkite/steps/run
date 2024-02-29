@@ -3,13 +3,13 @@
 set -Eeuo pipefail
 
 print_secrets() {
-  echo This a secret: Hello World!
+  echo This a secret: 🎉💜👍
 }
 
 print_secrets
 
 buildkite-agent secret redact --debug <<SECRETS
-Hello World!
+🎉💜👍
 SECRETS
 
 print_secrets
