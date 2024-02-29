@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 
-set -Eeuo pipefail
-
-print_secrets() {
-  echo This a secret: 🎉💜👍
+function trap_sigterm() {
+  echo "SIGTERM received, sleeping for 10 seconds"
+  sleep 5
+  echo "done sleeping! exiting now"
+  exit 0
 }
 
-print_secrets
+# trap sigterms and sleep for 10 seconds
+trap 'trap_sigterm' SIGTERM
 
-buildkite-agent secret redact <<SECRETS
-🎉💜👍
-SECRETS
-
-print_secrets
+sleep 60
