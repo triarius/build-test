@@ -8,7 +8,7 @@ print_secrets() {
 
 print_secrets
 
-buildkite-agent secret redact --debug <<SECRETS
+buildkite-agent secret redact <<SECRETS
 🎉💜👍
 SECRETS
 
