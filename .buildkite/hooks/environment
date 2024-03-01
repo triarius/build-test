@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+
+export MY_VALUE="muggier quasi stupefy dedicated"
+
+print_secrets() {
+  echo This a secret: "$MY_VALUE"
+}
+
+print_secrets
+
+echo "$MY_VALUE" | buildkite-agent secret redact
+
+print_secrets
