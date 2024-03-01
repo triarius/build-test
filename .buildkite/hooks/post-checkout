@@ -6,7 +6,7 @@ set -Eeuo pipefail
 export MY_VALUE="muggier quasi stupefy dedicated"
 
 print_secrets() {
-  echo This a secret: "$MY_VALUE"
+  echo This a secret: "$MY_VALUE", that was a secret
 }
 
 print_secrets
