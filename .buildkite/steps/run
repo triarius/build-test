@@ -14,6 +14,4 @@ SECRETS
 
 print_secrets
 
-buildkite-agent secret get TEST_SECRET
-
-echo "$MY_VALUE"
+echo "This is also a secret: $MY_VALUE, it should be redacted"
