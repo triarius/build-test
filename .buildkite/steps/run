@@ -14,4 +14,6 @@ SECRETS
 
 print_secrets
 
+buildkite-agent secret get TEST_SECRET
+
 echo "$MY_VALUE"
