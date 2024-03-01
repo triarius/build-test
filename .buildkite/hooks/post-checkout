@@ -2,15 +2,10 @@
 
 set -Eeuo pipefail
 
-
 export MY_VALUE="muggier quasi stupefy dedicated"
 
-print_secrets() {
-  echo This a secret: "$MY_VALUE", that was a secret
-}
-
-print_secrets
+echo This a secret: "$MY_VALUE", it should not be redacted yet.
 
 echo "$MY_VALUE" | buildkite-agent secret redact
 
-print_secrets
+echo This a secret: "$MY_VALUE", it should be redacted now.

@@ -3,15 +3,17 @@
 set -Eeuo pipefail
 
 print_secrets() {
-  echo This a secret: 🎉💜👍
+  echo -n This a secret: 🎉💜👍
 }
 
 print_secrets
+echo , it should not be redacted yet.
 
 buildkite-agent secret redact <<SECRETS
 🎉💜👍
 SECRETS
 
 print_secrets
+echo , it should be redacted now.
 
-echo "This is also a secret: $MY_VALUE, it should be redacted"
+echo "This is a secret from a previous hook: $MY_VALUE, it should also be redacted"
