@@ -9,7 +9,7 @@ print_secrets() {
 print_secrets
 echo , it should not be redacted yet.
 
-buildkite-agent secret redact <<SECRETS
+buildkite-agent log redact <<SECRETS
 🎉💜👍
 SECRETS
 
