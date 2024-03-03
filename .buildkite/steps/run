@@ -2,18 +2,7 @@
 
 set -Eeuo pipefail
 
-print_secrets() {
-  echo -n This a secret: 🎉💜👍
-}
+echo "$MY_SECRET is redeacted, as it was set as a secret a previous hook."
 
-print_secrets
-echo , it should not be redacted yet.
-
-buildkite-agent log redact <<SECRETS
-🎉💜👍
-SECRETS
-
-print_secrets
-echo , it should be redacted now.
-
-echo "This is a secret from a previous hook: $MY_VALUE, it should also be redacted"
+SECRET="🤫post-checkout🤫"
+echo "$SECRET is not redacted, despite being set as a secret caught by the redactor in a previous hook."

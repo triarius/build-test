@@ -2,4 +2,4 @@
 
 set -Eeuo pipefail
 
-export MY_SECRET="🤫post-checkout🤫"
+export MY_SECRET="🤫pre-command🤫"
