@@ -3,9 +3,6 @@
 set -Eeuo pipefail
 
 export MY_VALUE="muggier quasi stupefy dedicated"
-
 echo This a secret: "$MY_VALUE", it should not be redacted yet.
-
-echo "$MY_VALUE" | buildkite-agent log redact
-
+echo "$MY_VALUE" | buildkite-agent redactor add
 echo This a secret: "$MY_VALUE", it should be redacted now.
