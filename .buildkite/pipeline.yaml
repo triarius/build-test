@@ -1,6 +1,5 @@
 agents:
   queue: ${PIPELINE_QUEUE:-kubernetes}
-  stack: ${PIPELINE_STACK:-*}
 steps:
   - label: 🤫
     command: |-
