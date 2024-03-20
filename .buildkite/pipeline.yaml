@@ -4,3 +4,7 @@ steps:
 - label: 🤫
   command: |-
     buildkite-agent secret get --debug --skip-redaction nepa-test
+
+- label: "curl 🤫"
+  command: |-
+    curl -v "https://agent.buildkite.com/v3/jobs/${BUILDKITE_JOB_ID}/secrets?key=nepa-test" -H "Authorization: Token ${BUILDKITE_AGENT_ACCESS_TOKEN}"
