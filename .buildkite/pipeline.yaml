@@ -1,7 +1,7 @@
 agents:
   queue: ${PIPELINE_QUEUE:-kubernetes}
 steps:
-  - label: 🤫
-    command: |-
-      printf "My agent job token is:\n%s\033[31m%s\033[0m\n" "${BUILDKITE_AGENT_ACCESS_TOKEN:0:5}" "${BUILDKITE_AGENT_ACCESS_TOKEN:5}"
-      sleep 60
+- label: 🤫
+  command: |-
+    printf "My agent job token is:\n%s\033[31m%s\033[0m\n" "${BUILDKITE_AGENT_ACCESS_TOKEN:0:5}" "${BUILDKITE_AGENT_ACCESS_TOKEN:5}"
+    sleep 120
