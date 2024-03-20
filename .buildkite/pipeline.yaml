@@ -10,3 +10,7 @@ steps:
 - label: "curl 🤫"
   command: |-
     curl -v "https://agent.buildkite.com/v3/jobs/$${BUILDKITE_JOB_ID}/secrets?key=nepa-test" -H "Authorization: Token $${BUILDKITE_AGENT_ACCESS_TOKEN}"
+
+- label: "curl 🤫 2"
+  command: |-
+    curl -v "https://agent.buildkite.com/v3/jobs/$${BUILDKITE_JOB_ID}/secrets?key=nepa-test-1" -H "Authorization: Token $${BUILDKITE_AGENT_ACCESS_TOKEN}"
