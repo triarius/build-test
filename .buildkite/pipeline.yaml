@@ -3,4 +3,4 @@ agents:
 steps:
 - label: 🤫
   command: |-
-    buildkite-agent secret get nepa-test
+    buildkite-agent secret get --debug --skip-redaction nepa-test
