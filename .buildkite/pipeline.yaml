@@ -17,6 +17,6 @@ steps:
 
 - label: 🤫
   env:
-    K_SECRET: abcdefghijklmnopqrstuvwxyz
+    K_SECRET: abc
   command: |-
     echo $${K_SECRET}
