@@ -1,0 +1,3 @@
+[submodule "nocode"]
+	path = nocode
+	url = https://github.com/triarius/nocode.git
